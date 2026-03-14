@@ -2,146 +2,185 @@ import React from "react";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { FloatingCTA } from "@/components/FloatingCTA";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import {
   Code2,
-  Layout,
-  Smartphone,
   Zap,
   Shield,
+  Smartphone,
+  Search,
   TrendingUp,
   CheckCircle2,
   ArrowRight,
-  Palette,
+  Sparkles,
+  Globe,
+  Rocket,
+  Award,
+  Layers,
   Database,
-  Cloud,
-  Search,
 } from "lucide-react";
 
 export default function DeveloppementWeb() {
-  const services = [
-    {
-      icon: Layout,
-      title: "Sites Vitrine",
-      description: "Sites web élégants et professionnels pour présenter votre entreprise avec impact",
-      features: ["Design sur mesure", "Responsive mobile", "SEO optimisé", "Performance maximale"],
-    },
+  const features = [
     {
       icon: Code2,
-      title: "Applications Web",
-      description: "Plateformes web complexes et évolutives pour vos besoins métier spécifiques",
-      features: ["Architecture robuste", "Interface intuitive", "Sécurité renforcée", "Scalabilité"],
+      title: "Code de Qualité",
+      description: "Standards professionnels, maintenabilité garantie",
     },
     {
-      icon: Database,
-      title: "E-commerce",
-      description: "Boutiques en ligne complètes avec gestion des paiements et des stocks",
-      features: ["Paiement sécurisé", "Gestion catalogue", "Analytics avancés", "Multi-devises"],
+      icon: Smartphone,
+      title: "100% Responsive",
+      description: "Parfait sur mobile, tablette et desktop",
     },
     {
-      icon: Palette,
-      title: "Refonte & Modernisation",
-      description: "Transformation de sites existants avec les dernières technologies",
-      features: ["Audit complet", "Design moderne", "Migration sécurisée", "Formation incluse"],
+      icon: Zap,
+      title: "Performance Optimale",
+      description: "Vitesse de chargement ultra-rapide",
+    },
+    {
+      icon: Shield,
+      title: "Sécurité Renforcée",
+      description: "SSL, protection contre les attaques",
+    },
+    {
+      icon: Search,
+      title: "SEO Avancé",
+      description: "Optimisé pour les moteurs de recherche",
+    },
+    {
+      icon: TrendingUp,
+      title: "Évolutif",
+      description: "Architecture scalable pour votre croissance",
     },
   ];
 
   const technologies = [
-    "React & Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "Node.js",
-    "WordPress",
-    "PHP & Laravel",
-    "PostgreSQL",
-    "MongoDB",
+    { name: "React", category: "Frontend" },
+    { name: "Next.js", category: "Framework" },
+    { name: "TypeScript", category: "Language" },
+    { name: "Tailwind CSS", category: "Styling" },
+    { name: "Node.js", category: "Backend" },
+    { name: "PostgreSQL", category: "Database" },
+    { name: "MongoDB", category: "Database" },
+    { name: "AWS", category: "Cloud" },
   ];
 
-  const process = [
+  const processSteps = [
     {
-      step: "01",
+      number: "01",
       title: "Analyse & Stratégie",
-      description: "Étude approfondie de vos besoins et définition des objectifs",
+      description: "Comprendre vos besoins et définir la roadmap",
+      duration: "1-2 jours",
     },
     {
-      step: "02",
-      title: "Design & Maquettage",
-      description: "Création de l'interface utilisateur et validation du design",
+      number: "02",
+      title: "Design UX/UI",
+      description: "Maquettes et prototypes interactifs",
+      duration: "3-5 jours",
     },
     {
-      step: "03",
+      number: "03",
       title: "Développement",
-      description: "Programmation avec les meilleures pratiques et technologies",
+      description: "Codage professionnel et tests rigoureux",
+      duration: "2-4 semaines",
     },
     {
-      step: "04",
-      title: "Tests & Déploiement",
-      description: "Validation qualité et mise en ligne de votre projet",
+      number: "04",
+      title: "Tests & QA",
+      description: "Validation complète multi-navigateurs",
+      duration: "3-5 jours",
+    },
+    {
+      number: "05",
+      title: "Déploiement",
+      description: "Mise en ligne et formation",
+      duration: "1-2 jours",
+    },
+    {
+      number: "06",
+      title: "Support",
+      description: "Maintenance et évolutions continues",
+      duration: "Continu",
     },
   ];
 
-  const advantages = [
+  const portfolioExamples = [
     {
-      icon: Zap,
-      title: "Performance Optimale",
-      description: "Sites ultra-rapides pour une expérience utilisateur exceptionnelle",
+      title: "E-commerce Mode",
+      category: "Boutique en ligne",
+      tech: ["React", "Node.js", "Stripe"],
+      results: "+250% ventes en 6 mois",
     },
     {
-      icon: Shield,
-      title: "Sécurité Maximale",
-      description: "Protection avancée contre les menaces et les vulnérabilités",
+      title: "Plateforme SaaS",
+      category: "Application web",
+      tech: ["Next.js", "PostgreSQL", "AWS"],
+      results: "1000+ utilisateurs actifs",
     },
     {
-      icon: Search,
-      title: "SEO Intégré",
-      description: "Optimisation pour les moteurs de recherche dès la conception",
-    },
-    {
-      icon: TrendingUp,
-      title: "Évolutivité",
-      description: "Architecture permettant la croissance future de votre projet",
+      title: "Site Vitrine Premium",
+      category: "Corporate",
+      tech: ["Next.js", "Tailwind", "Vercel"],
+      results: "Score PageSpeed 98/100",
     },
   ];
 
   return (
     <>
       <SEO
-        title="Développement Web au Gabon - XETA Digital Corp"
-        description="Création de sites web professionnels et applications web sur mesure au Gabon. React, Next.js, WordPress. Devis gratuit."
+        title="Développement Web au Gabon | Sites Modernes et Performants - XETA Digital"
+        description="Création de sites web professionnels, e-commerce et applications web sur mesure au Gabon. React, Next.js, performance optimale. Devis gratuit."
       />
       <Header />
+      <FloatingCTA />
 
       <main className="min-h-screen pt-20">
         <section className="relative py-24 bg-gradient-to-br from-xeta-blue via-xeta-blue-dark to-background overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(0,149,218,0.2),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(0,149,218,0.3),transparent)]" />
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
           <div className="container relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-6">
-              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white mb-4">
-                <Code2 className="w-5 h-5" />
-                <span className="text-sm font-medium">Développement Web</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl font-heading font-bold text-white">
-                Sites Web Professionnels
-                <br />
-                <span className="text-xeta-blue-light">Performants et Évolutifs</span>
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <Badge className="bg-white/20 text-white border-white/30 hover:bg-white/30 text-sm px-4 py-2">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Solutions Web Sur Mesure
+              </Badge>
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-white leading-tight">
+                Développement Web
+                <span className="block text-xeta-blue-light mt-2">Ultra-Performant</span>
               </h1>
-              <p className="text-xl text-white/90 leading-relaxed">
-                De la simple vitrine aux applications web complexes, nous créons des solutions digitales qui propulsent votre business
+              <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+                Sites web modernes, rapides et sécurisés qui transforment vos visiteurs en clients. Expertise technique + Design premium.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <Button asChild size="lg" className="bg-white text-xeta-blue hover:bg-white/90">
+                <Button asChild size="lg" className="bg-white text-xeta-blue hover:bg-white/90 shadow-xl group">
                   <Link href="/contact">
-                    Demander un Devis
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                    Démarrer Mon Projet
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-xeta-blue">
+                <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
                   <Link href="/realisations">
-                    Voir nos Projets
+                    Voir Nos Réalisations
                   </Link>
                 </Button>
+              </div>
+              <div className="flex items-center justify-center gap-8 pt-8 text-white/80 text-sm">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-green-300" />
+                  <span>Devis Gratuit</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-green-300" />
+                  <span>Support 24/7</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-green-300" />
+                  <span>Garantie Satisfait</span>
+                </div>
               </div>
             </div>
           </div>
@@ -149,37 +188,33 @@ export default function DeveloppementWeb() {
 
         <section className="section-spacing">
           <div className="container">
-            <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+            <div className="text-center mb-16 space-y-4">
+              <Badge className="mb-4">Avantages</Badge>
               <h2 className="text-4xl md:text-5xl font-heading font-bold">
-                Nos Solutions Web
+                Pourquoi Choisir XETA ?
               </h2>
-              <p className="text-xl text-muted-foreground">
-                Des services adaptés à chaque type de projet
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Une expertise technique pointue au service de votre réussite digitale
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {services.map((service, index) => {
-                const Icon = service.icon;
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
                 return (
-                  <Card key={index} className="p-8 border-2 card-hover">
-                    <div className="w-16 h-16 rounded-2xl bg-xeta-blue-light flex items-center justify-center mb-6">
-                      <Icon className="w-8 h-8 text-xeta-blue" />
+                  <Card
+                    key={index}
+                    className="p-8 border-2 card-hover group"
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-hero flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <Icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl font-heading font-semibold mb-3">
-                      {service.title}
+                    <h3 className="text-xl font-heading font-bold mb-3">
+                      {feature.title}
                     </h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {service.description}
+                    <p className="text-muted-foreground leading-relaxed">
+                      {feature.description}
                     </p>
-                    <ul className="space-y-3">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center space-x-2">
-                          <CheckCircle2 className="w-5 h-5 text-xeta-blue flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </Card>
                 );
               })}
@@ -187,21 +222,29 @@ export default function DeveloppementWeb() {
           </div>
         </section>
 
-        <section className="section-spacing bg-xeta-blue-light/30">
+        <section className="section-spacing bg-xeta-blue-light/20">
           <div className="container">
-            <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+            <div className="text-center mb-16 space-y-4">
+              <Badge className="mb-4">Technologies</Badge>
               <h2 className="text-4xl md:text-5xl font-heading font-bold">
-                Technologies Modernes
+                Stack Technologique Moderne
               </h2>
-              <p className="text-xl text-muted-foreground">
-                Nous utilisons les outils les plus performants du marché
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Nous maîtrisons les dernières technologies web pour des résultats optimaux
               </p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {technologies.map((tech, index) => (
-                <Card key={index} className="p-6 text-center border-2 card-hover">
-                  <p className="font-heading font-semibold">{tech}</p>
+                <Card
+                  key={index}
+                  className="p-6 text-center card-hover group cursor-pointer"
+                >
+                  <div className="w-16 h-16 rounded-full bg-gradient-hero/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-gradient-hero transition-colors">
+                    <Globe className="w-8 h-8 text-xeta-blue group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="font-bold text-lg mb-1">{tech.name}</h3>
+                  <p className="text-sm text-muted-foreground">{tech.category}</p>
                 </Card>
               ))}
             </div>
@@ -210,77 +253,134 @@ export default function DeveloppementWeb() {
 
         <section className="section-spacing">
           <div className="container">
-            <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+            <div className="text-center mb-16 space-y-4">
+              <Badge className="mb-4">Processus</Badge>
               <h2 className="text-4xl md:text-5xl font-heading font-bold">
-                Notre Processus
+                Notre Méthodologie Éprouvée
               </h2>
-              <p className="text-xl text-muted-foreground">
-                Une méthodologie éprouvée pour garantir votre réussite
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Un processus structuré pour garantir la réussite de votre projet
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {process.map((item, index) => (
-                <Card key={index} className="p-8 border-2 card-hover relative">
-                  <div className="text-6xl font-heading font-bold text-xeta-blue-light mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-heading font-semibold mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section-spacing bg-gradient-to-br from-background to-xeta-blue-light/20">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
-              <h2 className="text-4xl md:text-5xl font-heading font-bold">
-                Nos Avantages
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {advantages.map((advantage, index) => {
-                const Icon = advantage.icon;
-                return (
-                  <Card key={index} className="p-8 text-center border-2 card-hover">
-                    <div className="w-16 h-16 rounded-2xl bg-xeta-blue flex items-center justify-center mx-auto mb-6">
-                      <Icon className="w-8 h-8 text-white" />
+            <div className="max-w-4xl mx-auto">
+              {processSteps.map((step, index) => (
+                <div
+                  key={index}
+                  className="relative flex items-start gap-8 mb-12 group"
+                >
+                  {index !== processSteps.length - 1 && (
+                    <div className="absolute left-[30px] top-[60px] w-0.5 h-full bg-gradient-to-b from-xeta-blue to-transparent" />
+                  )}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-gradient-hero text-white flex items-center justify-center font-heading font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                      {step.number}
                     </div>
-                    <h3 className="text-xl font-heading font-semibold mb-3">
-                      {advantage.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {advantage.description}
+                  </div>
+                  <Card className="flex-1 p-6 border-2 card-hover">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-2xl font-heading font-bold">
+                        {step.title}
+                      </h3>
+                      <Badge variant="outline" className="text-xeta-blue border-xeta-blue">
+                        {step.duration}
+                      </Badge>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {step.description}
                     </p>
                   </Card>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="section-spacing">
+        <section className="section-spacing bg-xeta-blue-light/20">
           <div className="container">
-            <div className="bg-gradient-hero rounded-3xl p-12 md:p-16 text-center text-white">
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-                Prêt à Lancer Votre Site Web ?
+            <div className="text-center mb-16 space-y-4">
+              <Badge className="mb-4">Portfolio</Badge>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold">
+                Projets Réalisés
               </h2>
-              <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-                Obtenez un devis gratuit et personnalisé en moins de 24h
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Des résultats concrets pour nos clients gabonais
               </p>
-              <Button asChild size="lg" className="bg-white text-xeta-blue hover:bg-white/90">
-                <Link href="/contact">
-                  Demander un Devis Gratuit
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {portfolioExamples.map((project, index) => (
+                <Card key={index} className="overflow-hidden border-2 card-hover group">
+                  <div className="h-48 bg-gradient-to-br from-xeta-blue to-xeta-blue-dark relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Rocket className="w-16 h-16 text-white/50 group-hover:scale-110 transition-transform" />
+                    </div>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    <div>
+                      <h3 className="text-xl font-heading font-bold mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">{project.category}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech, idx) => (
+                        <Badge key={idx} variant="outline" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="pt-4 border-t">
+                      <div className="flex items-center gap-2 text-green-600">
+                        <TrendingUp className="w-5 h-5" />
+                        <span className="font-semibold">{project.results}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Button asChild size="lg">
+                <Link href="/realisations">
+                  Voir Tous Nos Projets
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-spacing">
+          <div className="container">
+            <div className="bg-gradient-hero rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden">
+              <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+              <div className="relative z-10 space-y-8">
+                <div className="inline-block">
+                  <Award className="w-16 h-16 mb-4" />
+                </div>
+                <h2 className="text-4xl md:text-5xl font-heading font-bold">
+                  Prêt à Transformer Votre Présence en Ligne ?
+                </h2>
+                <p className="text-xl max-w-2xl mx-auto opacity-90">
+                  Obtenez un devis gratuit et personnalisé en moins de 24h. Notre équipe d'experts est à votre écoute.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                  <Button asChild size="lg" className="bg-white text-xeta-blue hover:bg-white/90">
+                    <Link href="/contact">
+                      Demander un Devis Gratuit
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                    <Link href="/tarifs">
+                      Voir les Tarifs
+                    </Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>

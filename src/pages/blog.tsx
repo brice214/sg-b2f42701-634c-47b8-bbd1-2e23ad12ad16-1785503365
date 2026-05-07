@@ -87,7 +87,7 @@ export default function Blog() {
       readTime: "8 min",
       category: "Business",
       icon: TrendingUp,
-      link: "/blog",
+      link: "/blog/business/ecommerce-gabon-cles-succes",
     },
     {
       title: "Cybersécurité : Protéger Votre Site Web des Attaques",

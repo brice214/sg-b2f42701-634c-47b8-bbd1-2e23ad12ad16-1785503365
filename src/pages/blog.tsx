@@ -43,6 +43,7 @@ export default function Blog() {
       readTime: "6 min",
       category: "Design",
       icon: Globe,
+      link: "/blog",
     },
     {
       title: "Guide Complet : Créer une Application Mobile Performante",
@@ -53,6 +54,7 @@ export default function Blog() {
       readTime: "10 min",
       category: "Développement",
       icon: Smartphone,
+      link: "/blog",
     },
     {
       title: "SEO Local : Dominer les Recherches au Gabon",
@@ -63,6 +65,7 @@ export default function Blog() {
       readTime: "7 min",
       category: "Marketing",
       icon: TrendingUp,
+      link: "/blog",
     },
     {
       title: "React vs Vue.js : Quel Framework Choisir en 2026?",
@@ -73,6 +76,7 @@ export default function Blog() {
       readTime: "9 min",
       category: "Technologie",
       icon: Code2,
+      link: "/blog",
     },
     {
       title: "E-commerce au Gabon : Les Clés du Succès",
@@ -83,6 +87,7 @@ export default function Blog() {
       readTime: "8 min",
       category: "Business",
       icon: TrendingUp,
+      link: "/blog",
     },
     {
       title: "Cybersécurité : Protéger Votre Site Web des Attaques",
@@ -93,6 +98,7 @@ export default function Blog() {
       readTime: "7 min",
       category: "Sécurité",
       icon: Code2,
+      link: "/blog/cybersecurite-proteger-site-web",
     },
   ];
 
@@ -267,10 +273,12 @@ export default function Blog() {
                           <Calendar className="w-3 h-3 mr-1" />
                           {post.date}
                         </div>
-                        <Button variant="ghost" size="sm" className="group/btn">
-                          Lire
-                          <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
+                        <Link href={post.link}>
+                          <Button variant="ghost" size="sm" className="group/btn">
+                            Lire
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </Card>

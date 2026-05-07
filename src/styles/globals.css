@@ -75,7 +75,12 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
+    background-color: hsl(var(--background));
+    background-image: url('/african-pattern.png');
+    background-size: 400px 400px;
+    background-repeat: repeat;
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;

@@ -98,7 +98,7 @@ export default function Blog() {
       readTime: "7 min",
       category: "Sécurité",
       icon: Code2,
-      link: "/blog/cybersecurite-proteger-site-web",
+      link: "/blog/securite/cybersecurite-proteger-site-web",
     },
   ];
 

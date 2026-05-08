@@ -35,6 +35,17 @@ export default function Blog() {
 
   const posts = [
     {
+      title: "Intelligence Artificielle : L'Avenir du Développement Web en 2026",
+      excerpt: "Découvrez comment l'IA transforme le développement web : outils, opportunités et défis",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      author: "Tech Innovation Team",
+      date: "12 Mars 2026",
+      readTime: "11 min",
+      category: "Technologie",
+      icon: Code2,
+      link: "/blog/technologie/intelligence-artificielle-avenir-developpement-web-2026",
+    },
+    {
       title: "10 Tendances du Design Web à Suivre en 2026",
       excerpt: "Les nouvelles pratiques de design qui transforment l'expérience utilisateur",
       image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",

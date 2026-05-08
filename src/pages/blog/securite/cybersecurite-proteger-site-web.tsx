@@ -88,7 +88,7 @@ export default function CybersecuriteArticle() {
       icon: Lock,
       steps: [
         "Obtenir un certificat SSL gratuit via Let's Encrypt",
-        "Configurer votre serveur pour HTTPS uniquement",
+        "Configurer votre serveur pour HTTPS uniquement. Un hébergeur fiable comme <a href='https://spiderhoster.com' target='_blank' rel='noopener noreferrer' className='text-xeta-blue hover:underline'>SpiderHoster</a> peut vous accompagner dans cette démarche.",
         "Rediriger tout le trafic HTTP vers HTTPS",
         "Vérifier le certificat avec SSL Labs",
       ],
@@ -192,8 +192,8 @@ export default function CybersecuriteArticle() {
   return (
     <>
       <SEO
-        title={article.title}
-        description={article.excerpt}
+        title="Cybersécurité Web 2026 : Protéger Votre Site des Cyberattaques | Guide Gabon"
+        description="Guide complet de sécurité web pour entreprises gabonaises : SSL/TLS, WAF, authentification 2FA, sauvegardes, monitoring. Protégez votre site contre SQL injection, XSS, DDoS. Checklist + budget + plan d'action."
         image={article.image}
       />
       <Header />
@@ -398,7 +398,8 @@ export default function CybersecuriteArticle() {
                   <p className="text-lg leading-relaxed">
                     Votre site web est la vitrine numérique de votre entreprise. Mais comme une boutique 
                     physique à Libreville ou Port-Gentil, elle peut être la cible de malfaiteurs. La 
-                    différence ? Les cybercriminels opèrent 24/7, depuis n'importe où dans le monde.
+                    différence ? Les cybercriminels opèrent 24/7, depuis n'importe où dans le monde. 
+                    Une fois votre site sécurisé, pensez aussi à optimiser votre <Link href="/blog/marketing/seo-local-dominer-recherches-gabon" className="text-xeta-blue hover:underline">visibilité locale sur Google</Link>.
                   </p>
 
                   <p className="text-lg leading-relaxed">

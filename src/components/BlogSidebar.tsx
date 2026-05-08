@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import Image from "next/image";
 import { Search, Calendar, Globe, X } from "lucide-react";
 import { getRecentPosts, getCategoriesWithCount, searchPosts } from "@/lib/blogData";
 import type { BlogPost } from "@/lib/blogData";
@@ -147,15 +148,28 @@ export function BlogSidebar({ currentCategory, onSearch }: BlogSidebarProps) {
         <div className="space-y-4">
           {recentPosts.map((post, index) => (
             <Link key={index} href={post.link}>
-              <div className="group cursor-pointer">
-                <h4 className="font-semibold text-sm group-hover:text-xeta-blue transition-colors line-clamp-2 mb-1">
-                  {post.title}
-                </h4>
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span>{post.date}</span>
-                  <Badge variant="outline" className="text-xs">
-                    {post.category}
-                  </Badge>
+              <div className="group cursor-pointer flex gap-3">
+                {/* Vignette de l'article */}
+                <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                
+                {/* Contenu */}
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-semibold text-sm group-hover:text-xeta-blue transition-colors line-clamp-2 mb-2">
+                    {post.title}
+                  </h4>
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span>{post.date}</span>
+                    <Badge variant="outline" className="text-xs">
+                      {post.category}
+                    </Badge>
+                  </div>
                 </div>
               </div>
               {index < recentPosts.length - 1 && (

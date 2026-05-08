@@ -76,7 +76,7 @@ export default function Blog() {
       readTime: "9 min",
       category: "Technologie",
       icon: Code2,
-      link: "/blog",
+      link: "/blog/technologie/react-vs-vuejs-framework-2026",
     },
     {
       title: "E-commerce au Gabon : Les Clés du Succès",

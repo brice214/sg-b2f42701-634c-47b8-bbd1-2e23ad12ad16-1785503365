@@ -255,6 +255,12 @@ export default function ArticleMobile() {
                     C'est l'une des décisions les plus importantes. Le choix dépend de votre budget, de vos délais et des fonctionnalités requises.
                   </p>
 
+                  <p className="text-muted-foreground mb-4">
+                    Le choix entre Flutter et React Native dépend de votre contexte. Pour une analyse 
+                    approfondie des frameworks JavaScript, consultez notre <Link href="/blog/technologie/react-vs-vuejs-framework-2026" className="text-xeta-blue hover:underline">comparatif React vs Vue.js</Link> qui 
+                    explore aussi l'écosystème React Native.
+                  </p>
+
                   <div className="overflow-x-auto my-8 not-prose">
                     <table className="w-full text-left border-collapse">
                       <thead>

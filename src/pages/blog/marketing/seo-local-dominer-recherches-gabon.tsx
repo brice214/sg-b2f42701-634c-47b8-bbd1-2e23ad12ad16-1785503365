@@ -360,7 +360,7 @@ export default function SEOLocalGabon() {
                             <AlertDescription className="text-base text-blue-900 dark:text-blue-100">
                               <strong>Astuce Pro :</strong> Publiez 3-4 posts GMB par semaine (offres, événements, actualités). 
                               Google privilégie les fiches actives. Utilisez des mots-clés locaux : "Libreville", "Port-Gentil", 
-                              "Franceville", noms de quartiers.
+                              "Franceville", noms de quartiers. Pour aller plus loin, découvrez ce <a href="https://digitalgabonews.com/audit-seo-le-guide-complet-pour-ameliorer-votre-referencement/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">guide complet d'audit SEO</a>.
                             </AlertDescription>
                           </Alert>
                         </div>

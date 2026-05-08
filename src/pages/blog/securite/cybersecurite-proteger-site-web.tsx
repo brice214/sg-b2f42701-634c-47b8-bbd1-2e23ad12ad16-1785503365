@@ -399,7 +399,8 @@ export default function CybersecuriteArticle() {
                     Votre site web est la vitrine numérique de votre entreprise. Mais comme une boutique 
                     physique à Libreville ou Port-Gentil, elle peut être la cible de malfaiteurs. La 
                     différence ? Les cybercriminels opèrent 24/7, depuis n'importe où dans le monde. 
-                    Une fois votre site sécurisé, pensez aussi à optimiser votre <Link href="/blog/marketing/seo-local-dominer-recherches-gabon" className="text-xeta-blue hover:underline">visibilité locale sur Google</Link>.
+                    La <a href="https://digitalgabonews.com/cybersecurite-au-gabon-menace-croissante-solutions-a-adopter/" target="_blank" rel="noopener noreferrer" className="text-xeta-blue hover:underline">cybersécurité au Gabon</a> est 
+                    devenue un enjeu majeur pour les entreprises. Une fois votre site sécurisé, pensez aussi à optimiser votre <Link href="/blog/marketing/seo-local-dominer-recherches-gabon" className="text-xeta-blue hover:underline">visibilité locale sur Google</Link>.
                   </p>
 
                   <p className="text-lg leading-relaxed">

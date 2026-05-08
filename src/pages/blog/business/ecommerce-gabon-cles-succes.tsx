@@ -157,7 +157,7 @@ export default function EcommerceGabonArticle() {
         "Google Shopping : annonces produits pour recherches 'acheter X au Gabon'",
         "WhatsApp Business : catalogue produits + statuts quotidiens",
         "Email : newsletter hebdo avec promotions exclusives",
-        "Référencement local : optimiser pour 'boutique en ligne Gabon', 'achat X Libreville'. Pour approfondir votre stratégie SEO, consultez notre <Link href='/blog/marketing/seo-local-dominer-recherches-gabon' className='text-xeta-blue hover:underline'>guide complet du SEO local au Gabon</Link>. Des plateformes comme <a href='https://lavoixpartiote.com' target='_blank' rel='noopener noreferrer' className='text-xeta-blue hover:underline'>La Voix Patriote</a> peuvent également amplifier votre visibilité auprès du public gabonais.",
+        "Référencement local : optimiser pour 'boutique en ligne Gabon', 'achat X Libreville'. Pour approfondir votre stratégie SEO, consultez notre <Link href='/blog/marketing/seo-local-dominer-recherches-gabon' className='text-xeta-blue hover:underline'>guide complet du SEO local au Gabon</Link>. Pour l'hébergement de votre boutique, <a href='https://spiderhoster.com' target='_blank' rel='noopener noreferrer' className='text-xeta-blue hover:underline'>SpiderHoster</a> offre des solutions performantes adaptées aux e-commerces gabonais.",
       ],
       warning: "Commencez petit, testez, mesurez, ajustez. Ne dépensez pas 500k FCFA en pub le 1er mois.",
     },

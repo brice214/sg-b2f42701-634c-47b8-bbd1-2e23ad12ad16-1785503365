@@ -549,7 +549,7 @@ export default function SEOLocalGabon() {
                           <h3 className="text-2xl font-bold mb-3">Backlinks Locaux de Qualité</h3>
                           <p className="text-muted-foreground mb-4">
                             Les liens entrants depuis des sites gabonais (.ga) ou de votre secteur renforcent 
-                            votre autorité locale. Qualité > quantité.
+                            votre autorité locale. Qualité &gt; quantité.
                           </p>
 
                           <div className="bg-muted/50 rounded-lg p-6">

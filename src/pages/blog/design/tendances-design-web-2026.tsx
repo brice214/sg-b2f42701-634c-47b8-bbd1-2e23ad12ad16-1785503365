@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { BlogSidebar } from "@/components/BlogSidebar";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, User, ArrowLeft, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, Palette, Sparkles, Eye, Zap, Layout, Tag } from "lucide-react";
+import { Calendar, Clock, User, ArrowLeft, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, Palette, Sparkles, Eye, Zap, Layout, Tag, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";

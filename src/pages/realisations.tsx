@@ -18,6 +18,15 @@ import {
 export default function Realisations() {
   const projects = [
     {
+      title: "TSANGOO SAAS",
+      category: "Application SaaS",
+      description: "Plateforme cloud de facturation et comptabilité pour PME gabonaises avec gestion multi-devises",
+      image: "/tsangoo-accueil-site-web-gabon.png",
+      technologies: ["Next.js", "TypeScript", "Cloud", "API"],
+      results: ["Interface intuitive", "Gestion temps réel", "Conformité fiscale"],
+      icon: Globe,
+    },
+    {
       title: "Plateforme E-commerce Gabonaise",
       category: "Développement Web",
       description: "Marketplace complète avec paiement mobile et gestion de stock en temps réel",

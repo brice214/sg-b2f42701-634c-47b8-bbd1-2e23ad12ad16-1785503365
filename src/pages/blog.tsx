@@ -54,7 +54,7 @@ export default function Blog() {
       readTime: "10 min",
       category: "Développement",
       icon: Smartphone,
-      link: "/blog",
+      link: "/blog/developpement/guide-complet-creer-application-mobile-performante",
     },
     {
       title: "SEO Local : Dominer les Recherches au Gabon",

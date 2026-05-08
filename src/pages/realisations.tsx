@@ -25,6 +25,7 @@ export default function Realisations() {
       technologies: ["Next.js", "TypeScript", "Cloud", "API"],
       results: ["Interface intuitive", "Gestion temps réel", "Conformité fiscale"],
       icon: Globe,
+      link: "https://www.tsangoo.com/",
     },
     {
       title: "Plateforme E-commerce Gabonaise",
@@ -200,6 +201,15 @@ export default function Realisations() {
                           ))}
                         </div>
                       </div>
+
+                      {project.link && (
+                        <Button asChild className="w-full">
+                          <a href={project.link} target="_blank" rel="noopener noreferrer">
+                            Visiter
+                            <ExternalLink className="ml-2 w-4 h-4" />
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </Card>
                 );

@@ -22,17 +22,6 @@ import {
 } from "lucide-react";
 
 export default function Blog() {
-  const featuredPost = {
-    title: "Intelligence Artificielle : L'Avenir du Développement Web en 2026",
-    excerpt: "Comment l'IA révolutionne la création de sites web et d'applications au Gabon et en Afrique",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
-    author: "XETA Digital Team",
-    date: "14 Mars 2026",
-    readTime: "8 min",
-    category: "Technologie",
-    icon: Lightbulb,
-  };
-
   const posts = [
     {
       title: "Intelligence Artificielle : L'Avenir du Développement Web en 2026",
@@ -112,6 +101,9 @@ export default function Blog() {
       link: "/blog/securite/cybersecurite-proteger-site-web",
     },
   ];
+
+  // L'article en vedette est toujours le dernier article publié (premier du tableau)
+  const featuredPost = posts[0];
 
   const categories = [
     "Tous",
@@ -224,10 +216,12 @@ export default function Blog() {
                         <span>{featuredPost.author}</span>
                       </div>
 
-                      <Button size="lg" className="group/btn">
-                        Lire l'Article
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
+                      <Link href={featuredPost.link}>
+                        <Button size="lg" className="group/btn">
+                          Lire l'Article
+                          <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>

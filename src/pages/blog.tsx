@@ -24,6 +24,17 @@ import {
 export default function Blog() {
   const posts = [
     {
+      title: "La Facture Électronique au Gabon : Tsangoo SaaS au Service des PME et Compagnies Gabonaises",
+      excerpt: "Découvrez comment Tsangoo révolutionne la gestion des entreprises gabonaises avec une solution conforme OHADA/SYSCOHADA",
+      image: "/tsangoo-gabon-facturation-comptabilite.png",
+      author: "Business Team",
+      date: "15 Mars 2026",
+      readTime: "10 min",
+      category: "Business",
+      icon: TrendingUp,
+      link: "/blog/business/facture-electronique-gabon-tsangoo-saas-pme",
+    },
+    {
       title: "Intelligence Artificielle : L'Avenir du Développement Web en 2026",
       excerpt: "Découvrez comment l'IA transforme le développement web : outils, opportunités et défis",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",

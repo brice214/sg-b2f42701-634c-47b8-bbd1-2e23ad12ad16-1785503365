@@ -1,68 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import {
-  Search,
-  Calendar,
-  TrendingUp,
-  Code2,
-  Smartphone,
-  Globe,
-  Lightbulb,
-  ShieldAlert,
-  Briefcase,
-} from "lucide-react";
+import { Search, Calendar, Globe } from "lucide-react";
+import { getRecentPosts, getCategoriesWithCount } from "@/lib/blogData";
 
 interface BlogSidebarProps {
   currentCategory?: string;
+  onSearch?: (query: string) => void;
 }
 
-export function BlogSidebar({ currentCategory }: BlogSidebarProps) {
-  const recentPosts = [
-    {
-      title: "Intelligence Artificielle : L'Avenir du Développement Web",
-      date: "14 Mars 2026",
-      link: "/blog",
-      category: "Technologie",
-    },
-    {
-      title: "10 Tendances du Design Web à Suivre en 2026",
-      date: "10 Mars 2026",
-      link: "/blog",
-      category: "Design",
-    },
-    {
-      title: "Guide Complet : Créer une Application Mobile Performante",
-      date: "5 Mars 2026",
-      link: "/blog",
-      category: "Développement",
-    },
-    {
-      title: "SEO Local : Dominer les Recherches au Gabon",
-      date: "1 Mars 2026",
-      link: "/blog",
-      category: "Marketing",
-    },
-    {
-      title: "Cybersécurité : Protéger Votre Site Web",
-      date: "15 Février 2026",
-      link: "/blog/securite/cybersecurite-proteger-site-web",
-      category: "Sécurité",
-    },
-  ];
+export function BlogSidebar({ currentCategory, onSearch }: BlogSidebarProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const recentPosts = getRecentPosts(5);
+  const categories = getCategoriesWithCount();
 
-  const categories = [
-    { name: "Technologie", count: 8, icon: Lightbulb, color: "text-blue-600" },
-    { name: "Design", count: 6, icon: Globe, color: "text-purple-600" },
-    { name: "Développement", count: 12, icon: Code2, color: "text-green-600" },
-    { name: "Marketing", count: 5, icon: TrendingUp, color: "text-orange-600" },
-    { name: "Business", count: 4, icon: Briefcase, color: "text-indigo-600" },
-    { name: "Sécurité", count: 7, icon: ShieldAlert, color: "text-red-600" },
-    { name: "Mobile", count: 3, icon: Smartphone, color: "text-pink-600" },
-  ];
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (onSearch) {
+      onSearch(searchQuery);
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -72,16 +33,18 @@ export function BlogSidebar({ currentCategory }: BlogSidebarProps) {
           <Search className="w-5 h-5 mr-2 text-xeta-blue" />
           Rechercher
         </h3>
-        <div className="flex gap-2">
+        <form onSubmit={handleSearch} className="flex gap-2">
           <Input
             type="search"
             placeholder="Rechercher un article..."
             className="flex-1"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <Button size="icon" className="shrink-0">
+          <Button type="submit" size="icon" className="shrink-0">
             <Search className="w-4 h-4" />
           </Button>
-        </div>
+        </form>
       </Card>
 
       {/* Recent Posts Widget */}

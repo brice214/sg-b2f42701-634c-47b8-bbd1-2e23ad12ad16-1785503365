@@ -1,130 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
+import { BlogSidebar } from "@/components/BlogSidebar";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import {
   Calendar,
   Clock,
   User,
   ArrowRight,
-  TrendingUp,
   BookOpen,
-  Lightbulb,
-  Code2,
-  Smartphone,
-  Globe,
 } from "lucide-react";
+import { blogPosts, searchPosts, getPostsByCategory, getCategoriesWithCount } from "@/lib/blogData";
+import type { BlogPost } from "@/lib/blogData";
 
 export default function Blog() {
-  const posts = [
-    {
-      title: "La Facture Électronique au Gabon : Tsangoo SaaS au Service des PME et Compagnies Gabonaises",
-      excerpt: "Découvrez comment Tsangoo révolutionne la gestion des entreprises gabonaises avec une solution conforme OHADA/SYSCOHADA",
-      image: "/tsangoo-gabon-facturation-comptabilite.png",
-      author: "Business Team",
-      date: "15 Mars 2026",
-      readTime: "10 min",
-      category: "Business",
-      icon: TrendingUp,
-      link: "/blog/business/facture-electronique-gabon-tsangoo-saas-pme",
-    },
-    {
-      title: "Intelligence Artificielle : L'Avenir du Développement Web en 2026",
-      excerpt: "Découvrez comment l'IA transforme le développement web : outils, opportunités et défis",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-      author: "Tech Innovation Team",
-      date: "12 Mars 2026",
-      readTime: "11 min",
-      category: "Technologie",
-      icon: Code2,
-      link: "/blog/technologie/intelligence-artificielle-avenir-developpement-web-2026",
-    },
-    {
-      title: "10 Tendances du Design Web à Suivre en 2026",
-      excerpt: "Les nouvelles pratiques de design qui transforment l'expérience utilisateur",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
-      author: "Design Team",
-      date: "10 Mars 2026",
-      readTime: "12 min",
-      category: "Design",
-      icon: Globe,
-      link: "/blog/design/tendances-design-web-2026",
-    },
-    {
-      title: "Guide Complet : Créer une Application Mobile Performante",
-      excerpt: "Les étapes essentielles pour développer une app mobile qui cartonne",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-      author: "Mobile Dev Team",
-      date: "5 Mars 2026",
-      readTime: "10 min",
-      category: "Développement",
-      icon: Smartphone,
-      link: "/blog/developpement/guide-complet-creer-application-mobile-performante",
-    },
-    {
-      title: "SEO Local : Dominer les Recherches au Gabon",
-      excerpt: "Stratégies pour apparaître en première page sur Google.ga et attirer des clients",
-      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
-      author: "Marketing Team",
-      date: "1 Mars 2026",
-      readTime: "8 min",
-      category: "Marketing",
-      icon: TrendingUp,
-      link: "/blog/marketing/seo-local-dominer-recherches-gabon",
-    },
-    {
-      title: "React vs Vue.js : Quel Framework Choisir en 2026?",
-      excerpt: "Comparaison détaillée des deux frameworks JavaScript les plus populaires",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-      author: "Tech Team",
-      date: "25 Février 2026",
-      readTime: "9 min",
-      category: "Technologie",
-      icon: Code2,
-      link: "/blog/technologie/react-vs-vuejs-framework-2026",
-    },
-    {
-      title: "E-commerce au Gabon : Les Clés du Succès",
-      excerpt: "Comment lancer et développer une boutique en ligne rentable au Gabon",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-      author: "Business Team",
-      date: "20 Février 2026",
-      readTime: "8 min",
-      category: "Business",
-      icon: TrendingUp,
-      link: "/blog/business/ecommerce-gabon-cles-succes",
-    },
-    {
-      title: "Cybersécurité : Protéger Votre Site Web des Attaques",
-      excerpt: "Les meilleures pratiques pour sécuriser votre présence en ligne",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
-      author: "Security Team",
-      date: "15 Février 2026",
-      readTime: "7 min",
-      category: "Sécurité",
-      icon: Code2,
-      link: "/blog/securite/cybersecurite-proteger-site-web",
-    },
-  ];
+  const router = useRouter();
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
+  const [activeCategory, setActiveCategory] = useState("Tous");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Gérer les paramètres d'URL (category query param)
+  useEffect(() => {
+    const categoryFromUrl = router.query.category as string;
+    if (categoryFromUrl) {
+      const categoryName = categoryFromUrl.charAt(0).toUpperCase() + categoryFromUrl.slice(1);
+      setActiveCategory(categoryName);
+      setFilteredPosts(getPostsByCategory(categoryName));
+    }
+  }, [router.query.category]);
 
   // L'article en vedette est toujours le dernier article publié (premier du tableau)
-  const featuredPost = posts[0];
+  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : blogPosts[0];
 
-  const categories = [
-    "Tous",
-    "Technologie",
-    "Design",
-    "Développement",
-    "Marketing",
-    "Business",
-    "Sécurité",
-  ];
+  const categories = ["Tous", ...getCategoriesWithCount().map(cat => cat.name)];
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setSearchQuery("");
+    
+    if (category === "Tous") {
+      setFilteredPosts(blogPosts);
+      router.push("/blog", undefined, { shallow: true });
+    } else {
+      setFilteredPosts(getPostsByCategory(category));
+      router.push(`/blog?category=${category.toLowerCase()}`, undefined, { shallow: true });
+    }
+  };
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    setActiveCategory("Tous");
+    
+    if (query.trim()) {
+      setFilteredPosts(searchPosts(query));
+    } else {
+      setFilteredPosts(blogPosts);
+    }
+  };
 
   return (
     <>
@@ -155,6 +94,11 @@ export default function Blog() {
               <p className="text-xl text-white/90 leading-relaxed animate-fade-in-up animation-delay-200">
                 Restez informé des dernières innovations du digital au Gabon et en Afrique
               </p>
+              {searchQuery && (
+                <p className="text-white/80 text-sm">
+                  {filteredPosts.length} résultat{filteredPosts.length > 1 ? "s" : ""} pour "{searchQuery}"
+                </p>
+              )}
             </div>
           </div>
         </section>
@@ -166,8 +110,9 @@ export default function Blog() {
               {categories.map((category, index) => (
                 <Button
                   key={index}
-                  variant={category === "Tous" ? "default" : "outline"}
+                  variant={category === activeCategory ? "default" : "outline"}
                   className="rounded-full"
+                  onClick={() => handleCategoryChange(category)}
                 >
                   {category}
                 </Button>
@@ -177,137 +122,165 @@ export default function Blog() {
         </section>
 
         {/* Featured Article */}
-        <section className="section-spacing bg-gradient-to-b from-background to-xeta-blue-light/10">
-          <div className="container">
-            <div className="max-w-6xl mx-auto">
-              <Card className="overflow-hidden border-2 card-hover group">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative h-[400px] lg:h-auto overflow-hidden">
-                    <Image
-                      src={featuredPost.image}
-                      alt={featuredPost.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-xeta-blue text-white text-sm px-4 py-2">
-                        Article Vedette
-                      </Badge>
-                    </div>
-                  </div>
-
-                  <div className="p-12 flex flex-col justify-center">
-                    <div className="flex items-center space-x-2 mb-4">
-                      <Badge variant="outline" className="rounded-full">
-                        {featuredPost.category}
-                      </Badge>
-                      <span className="text-sm text-muted-foreground">•</span>
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {featuredPost.date}
-                      </div>
-                      <span className="text-sm text-muted-foreground">•</span>
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {featuredPost.readTime}
-                      </div>
-                    </div>
-
-                    <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 group-hover:text-xeta-blue transition-colors">
-                      {featuredPost.title}
-                    </h2>
-
-                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                      {featuredPost.excerpt}
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <User className="w-4 h-4" />
-                        <span>{featuredPost.author}</span>
-                      </div>
-
-                      <Link href={featuredPost.link}>
-                        <Button size="lg" className="group/btn">
-                          Lire l'Article
-                          <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Blog Posts Grid */}
-        <section className="section-spacing">
-          <div className="container">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => {
-                const Icon = post.icon;
-                return (
-                  <Card key={index} className="overflow-hidden border-2 card-hover group flex flex-col">
-                    <div className="relative h-56 overflow-hidden">
+        {!searchQuery && activeCategory === "Tous" && (
+          <section className="section-spacing bg-gradient-to-b from-background to-xeta-blue-light/10">
+            <div className="container">
+              <div className="max-w-6xl mx-auto">
+                <Card className="overflow-hidden border-2 card-hover group">
+                  <div className="grid lg:grid-cols-2 gap-0">
+                    <div className="relative h-[400px] lg:h-auto overflow-hidden">
                       <Image
-                        src={post.image}
-                        alt={post.title}
+                        src={featuredPost.image}
+                        alt={featuredPost.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                      <div className="absolute top-4 right-4">
-                        <div className="w-10 h-10 rounded-lg bg-xeta-blue/90 backdrop-blur-sm flex items-center justify-center">
-                          <Icon className="w-5 h-5 text-white" />
-                        </div>
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-xeta-blue text-white text-sm px-4 py-2">
+                          Article Vedette
+                        </Badge>
                       </div>
                     </div>
 
-                    <div className="p-6 flex-1 flex flex-col">
-                      <div className="flex items-center space-x-2 mb-3">
-                        <Badge variant="outline" className="rounded-full text-xs">
-                          {post.category}
+                    <div className="p-12 flex flex-col justify-center">
+                      <div className="flex items-center space-x-2 mb-4">
+                        <Badge variant="outline" className="rounded-full">
+                          {featuredPost.category}
                         </Badge>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <div className="flex items-center text-xs text-muted-foreground">
-                          <Clock className="w-3 h-3 mr-1" />
-                          {post.readTime}
+                        <span className="text-sm text-muted-foreground">•</span>
+                        <div className="flex items-center text-sm text-muted-foreground">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {featuredPost.date}
+                        </div>
+                        <span className="text-sm text-muted-foreground">•</span>
+                        <div className="flex items-center text-sm text-muted-foreground">
+                          <Clock className="w-4 h-4 mr-1" />
+                          {featuredPost.readTime}
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-xeta-blue transition-colors line-clamp-2">
-                        {post.title}
-                      </h3>
+                      <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 group-hover:text-xeta-blue transition-colors">
+                        {featuredPost.title}
+                      </h2>
 
-                      <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-2 flex-1">
-                        {post.excerpt}
+                      <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                        {featuredPost.excerpt}
                       </p>
 
-                      <div className="flex items-center justify-between pt-4 border-t">
-                        <div className="flex items-center text-xs text-muted-foreground">
-                          <Calendar className="w-3 h-3 mr-1" />
-                          {post.date}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                          <User className="w-4 h-4" />
+                          <span>{featuredPost.author}</span>
                         </div>
-                        <Link href={post.link}>
-                          <Button variant="ghost" size="sm" className="group/btn">
-                            Lire
-                            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+
+                        <Link href={featuredPost.link}>
+                          <Button size="lg" className="group/btn">
+                            Lire l'Article
+                            <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                           </Button>
                         </Link>
                       </div>
                     </div>
-                  </Card>
-                );
-              })}
+                  </div>
+                </Card>
+              </div>
             </div>
+          </section>
+        )}
 
-            {/* Load More */}
-            <div className="text-center mt-16">
-              <Button size="lg" variant="outline" className="group">
-                Charger Plus d'Articles
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+        {/* Blog Posts Grid */}
+        <section className="section-spacing">
+          <div className="container">
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Blog Posts */}
+              <div className="lg:col-span-2">
+                {filteredPosts.length === 0 ? (
+                  <Card className="p-12 text-center border-2">
+                    <BookOpen className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+                    <h3 className="text-2xl font-heading font-bold mb-2">
+                      Aucun article trouvé
+                    </h3>
+                    <p className="text-muted-foreground mb-6">
+                      Essayez de modifier votre recherche ou de sélectionner une autre catégorie
+                    </p>
+                    <Button onClick={() => {
+                      setSearchQuery("");
+                      setActiveCategory("Tous");
+                      setFilteredPosts(blogPosts);
+                    }}>
+                      Voir tous les articles
+                    </Button>
+                  </Card>
+                ) : (
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {filteredPosts.map((post, index) => {
+                      const Icon = post.icon;
+                      return (
+                        <Card key={index} className="overflow-hidden border-2 card-hover group flex flex-col">
+                          <div className="relative h-56 overflow-hidden">
+                            <Image
+                              src={post.image}
+                              alt={post.title}
+                              fill
+                              className="object-cover group-hover:scale-110 transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                            <div className="absolute top-4 right-4">
+                              <div className="w-10 h-10 rounded-lg bg-xeta-blue/90 backdrop-blur-sm flex items-center justify-center">
+                                <Icon className="w-5 h-5 text-white" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="p-6 flex-1 flex flex-col">
+                            <div className="flex items-center space-x-2 mb-3">
+                              <Badge variant="outline" className="rounded-full text-xs">
+                                {post.category}
+                              </Badge>
+                              <span className="text-xs text-muted-foreground">•</span>
+                              <div className="flex items-center text-xs text-muted-foreground">
+                                <Clock className="w-3 h-3 mr-1" />
+                                {post.readTime}
+                              </div>
+                            </div>
+
+                            <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-xeta-blue transition-colors line-clamp-2">
+                              {post.title}
+                            </h3>
+
+                            <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-2 flex-1">
+                              {post.excerpt}
+                            </p>
+
+                            <div className="flex items-center justify-between pt-4 border-t">
+                              <div className="flex items-center text-xs text-muted-foreground">
+                                <Calendar className="w-3 h-3 mr-1" />
+                                {post.date}
+                              </div>
+                              <Link href={post.link}>
+                                <Button variant="ghost" size="sm" className="group/btn">
+                                  Lire
+                                  <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                </Button>
+                              </Link>
+                            </div>
+                          </div>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Sidebar */}
+              <div className="lg:col-span-1">
+                <div className="lg:sticky lg:top-24">
+                  <BlogSidebar 
+                    currentCategory={activeCategory !== "Tous" ? activeCategory : undefined}
+                    onSearch={handleSearch}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>

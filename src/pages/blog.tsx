@@ -62,10 +62,10 @@ export default function Blog() {
       image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
       author: "Marketing Team",
       date: "1 Mars 2026",
-      readTime: "7 min",
+      readTime: "8 min",
       category: "Marketing",
       icon: TrendingUp,
-      link: "/blog",
+      link: "/blog/marketing/seo-local-dominer-recherches-gabon",
     },
     {
       title: "React vs Vue.js : Quel Framework Choisir en 2026?",

@@ -40,10 +40,10 @@ export default function Blog() {
       image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
       author: "Design Team",
       date: "10 Mars 2026",
-      readTime: "6 min",
+      readTime: "12 min",
       category: "Design",
       icon: Globe,
-      link: "/blog",
+      link: "/blog/design/tendances-design-web-2026",
     },
     {
       title: "Guide Complet : Créer une Application Mobile Performante",

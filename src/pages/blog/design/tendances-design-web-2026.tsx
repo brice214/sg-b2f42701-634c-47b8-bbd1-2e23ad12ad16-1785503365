@@ -23,9 +23,9 @@ export default function TendancesDesignWeb2026() {
   return (
     <>
       <SEO
-        title="10 Tendances du Design Web à Suivre en 2026 | XETA Digital Corp"
-        description="Découvrez les 10 tendances majeures du design web en 2026 : IA générative, bento grids, micro-interactions, dark mode, typographie variable et plus encore."
-        image="/og-image.png"
+        title="10 Tendances Design Web 2026 : Glassmorphisme, IA, Accessibilité | Guide Gabon"
+        description="Découvrez les 10 tendances design web qui dominent 2026 : glassmorphisme, mode sombre intelligent, micro-interactions, IA générative, accessibilité WCAG 2.2. Outils + exemples + budget."
+        image="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80"
       />
 
       <script

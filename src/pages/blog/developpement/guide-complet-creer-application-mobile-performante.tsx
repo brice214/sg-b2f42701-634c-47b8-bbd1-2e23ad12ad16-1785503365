@@ -61,10 +61,9 @@ export default function ArticleMobile() {
   return (
     <>
       <SEO
-        title={`${post.title} | Blog XETA Digital Corp`}
-        description={post.excerpt}
-        image={post.image}
-        url={post.url}
+        title="Guide Complet : Créer une Application Mobile Performante 2026 | Flutter, React Native"
+        description="Développement d'applications mobiles au Gabon : Flutter vs React Native, architecture, performance, budget 2-5M FCFA. Guide étape par étape avec exemples code, checklist, outils."
+        image="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=80"
       />
       <script
         type="application/ld+json"
@@ -114,8 +113,11 @@ export default function ArticleMobile() {
                   {post.title}
                 </h1>
 
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  {post.excerpt}
+                <p className="text-xl leading-relaxed text-muted-foreground mb-6">
+                  Créer une application mobile performante en 2026 nécessite plus qu'un simple codage — 
+                  c'est un équilibre entre expérience utilisateur, performance technique et viabilité business. 
+                  Les <Link href="/blog/design/tendances-design-web-2026" className="text-xeta-blue hover:underline">tendances design actuelles</Link> s'appliquent 
+                  aussi aux applications mobiles, avec l'<Link href="/blog/technologie/intelligence-artificielle-avenir-developpement-web-2026" className="text-xeta-blue hover:underline">IA qui révolutionne le développement</Link>.
                 </p>
 
                 <div className="flex items-center justify-between py-6 border-y mb-10">

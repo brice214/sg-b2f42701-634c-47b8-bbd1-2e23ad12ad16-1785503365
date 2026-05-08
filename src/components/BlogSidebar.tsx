@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Search, Calendar, Globe } from "lucide-react";
-import { getRecentPosts, getCategoriesWithCount } from "@/lib/blogData";
+import { Search, Calendar, Globe, X } from "lucide-react";
+import { getRecentPosts, getCategoriesWithCount, searchPosts } from "@/lib/blogData";
+import type { BlogPost } from "@/lib/blogData";
 
 interface BlogSidebarProps {
   currentCategory?: string;
@@ -14,15 +15,49 @@ interface BlogSidebarProps {
 
 export function BlogSidebar({ currentCategory, onSearch }: BlogSidebarProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<BlogPost[]>([]);
+  const [showResults, setShowResults] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
   
   const recentPosts = getRecentPosts(5);
   const categories = getCategoriesWithCount();
 
+  // Recherche en temps réel
+  useEffect(() => {
+    if (searchQuery.trim().length > 0) {
+      const results = searchPosts(searchQuery);
+      setSearchResults(results);
+      setShowResults(true);
+    } else {
+      setSearchResults([]);
+      setShowResults(false);
+    }
+  }, [searchQuery]);
+
+  // Fermer les résultats quand on clique à l'extérieur
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (onSearch) {
+    if (onSearch && searchQuery.trim()) {
       onSearch(searchQuery);
+      setShowResults(false);
     }
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+    setShowResults(false);
   };
 
   return (
@@ -33,18 +68,74 @@ export function BlogSidebar({ currentCategory, onSearch }: BlogSidebarProps) {
           <Search className="w-5 h-5 mr-2 text-xeta-blue" />
           Rechercher
         </h3>
-        <form onSubmit={handleSearch} className="flex gap-2">
-          <Input
-            type="search"
-            placeholder="Rechercher un article..."
-            className="flex-1"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <Button type="submit" size="icon" className="shrink-0">
-            <Search className="w-4 h-4" />
-          </Button>
-        </form>
+        <div ref={searchRef} className="relative">
+          <form onSubmit={handleSearch} className="flex gap-2">
+            <div className="relative flex-1">
+              <Input
+                type="search"
+                placeholder="Rechercher un article..."
+                className="pr-8"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => searchQuery.trim() && setShowResults(true)}
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={handleClearSearch}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+            <Button type="submit" size="icon" className="shrink-0">
+              <Search className="w-4 h-4" />
+            </Button>
+          </form>
+
+          {/* Résultats de recherche en temps réel */}
+          {showResults && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-background border-2 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+              {searchResults.length > 0 ? (
+                <div className="p-2">
+                  <div className="px-3 py-2 text-xs text-muted-foreground font-medium">
+                    {searchResults.length} résultat{searchResults.length > 1 ? "s" : ""} trouvé{searchResults.length > 1 ? "s" : ""}
+                  </div>
+                  {searchResults.map((post, index) => (
+                    <Link key={index} href={post.link}>
+                      <div
+                        className="p-3 rounded-lg hover:bg-muted transition-colors cursor-pointer group"
+                        onClick={() => {
+                          setShowResults(false);
+                          setSearchQuery("");
+                        }}
+                      >
+                        <h4 className="font-semibold text-sm group-hover:text-xeta-blue transition-colors line-clamp-2 mb-1">
+                          {post.title}
+                        </h4>
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <Badge variant="outline" className="text-xs">
+                            {post.category}
+                          </Badge>
+                          <span>•</span>
+                          <span>{post.date}</span>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-6 text-center">
+                  <Search className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+                  <p className="text-sm text-muted-foreground">
+                    Aucun article trouvé pour "{searchQuery}"
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </Card>
 
       {/* Recent Posts Widget */}

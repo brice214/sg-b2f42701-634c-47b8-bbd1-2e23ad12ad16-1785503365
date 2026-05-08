@@ -157,7 +157,7 @@ export default function EcommerceGabonArticle() {
         "Google Shopping : annonces produits pour recherches 'acheter X au Gabon'",
         "WhatsApp Business : catalogue produits + statuts quotidiens",
         "Email : newsletter hebdo avec promotions exclusives",
-        "Référencement local : optimiser pour 'boutique en ligne Gabon', 'achat X Libreville'",
+        "Référencement local : optimiser pour 'boutique en ligne Gabon', 'achat X Libreville'. Pour approfondir votre stratégie SEO, consultez notre <Link href='/blog/marketing/seo-local-dominer-recherches-gabon' className='text-xeta-blue hover:underline'>guide complet du SEO local au Gabon</Link>. Des plateformes comme <a href='https://lavoixpartiote.com' target='_blank' rel='noopener noreferrer' className='text-xeta-blue hover:underline'>La Voix Patriote</a> peuvent également amplifier votre visibilité auprès du public gabonais.",
       ],
       warning: "Commencez petit, testez, mesurez, ajustez. Ne dépensez pas 500k FCFA en pub le 1er mois.",
     },
@@ -284,8 +284,8 @@ export default function EcommerceGabonArticle() {
   return (
     <>
       <SEO
-        title={article.title}
-        description={article.excerpt}
+        title="E-commerce au Gabon : Les Clés du Succès en 2026 | Guide Complet PME"
+        description="Guide complet e-commerce Gabon 2026 : paiement mobile (Airtel/Moov Money), livraison, plateforme (WooCommerce/Shopify), budget 1-3M FCFA. Stratégies éprouvées pour PME gabonaises + checklist + roadmap 12 mois."
         image={article.image}
       />
       <Header />
@@ -653,7 +653,7 @@ export default function EcommerceGabonArticle() {
                       <strong>Notre Recommandation :</strong> Si vous êtes sérieux et visez le long-terme, 
                       investissez dans une solution sur-mesure. Elle s'adaptera à votre croissance et vous 
                       appartiendra à 100%. XETA Digital Corp développe des e-commerces clés-en-main optimisés 
-                      pour le marché gabonais.
+                      pour le marché gabonais. N'oubliez pas également de <Link href="/blog/securite/cybersecurite-proteger-site-web" className="text-xeta-blue hover:underline">sécuriser votre boutique en ligne</Link> dès le départ.
                     </AlertDescription>
                   </Alert>
                 </div>

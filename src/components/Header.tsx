@@ -22,6 +22,7 @@ export function Header() {
     { name: "Développement Mobile", href: "/services/developpement-mobile" },
     { name: "Hébergement Web", href: "/services/hebergement" },
     { name: "Nom de Domaine", href: "/services/domaine" },
+    { name: "Emails Professionnels", href: "/services/emails-professionnels" },
   ];
 
   return (

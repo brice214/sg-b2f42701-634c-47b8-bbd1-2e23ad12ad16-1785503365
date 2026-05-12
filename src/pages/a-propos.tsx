@@ -44,7 +44,7 @@ export default function APropos() {
 
   const team = [
     {
-      name: "KASSA NZIGOU Freddy Jordan",
+      name: "Brice Emery MBENDJE",
       role: "Fondateur & Directeur Technique",
       description: "Expert en développement full-stack et architecture cloud",
     },
@@ -61,8 +61,8 @@ export default function APropos() {
   ];
 
   const milestones = [
-    { year: "2019", event: "Création de XETA Digital" },
-    { year: "2020", event: "Lancement des services d'hébergement" },
+    { year: "2016", event: "Création de XETA Digital" },
+    { year: "2018", event: "Lancement des services d'hébergement" },
     { year: "2021", event: "Expansion mobile et 30+ clients" },
     { year: "2024", event: "50+ projets livrés avec succès" },
   ];
@@ -91,7 +91,7 @@ export default function APropos() {
                 Notre Histoire
               </h1>
               <p className="text-xl text-white/90 leading-relaxed animate-fade-in-up animation-delay-200">
-                Pionniers de la transformation digitale au Gabon depuis 2019
+                Pionniers de la transformation digitale au Gabon depuis 2016
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function APropos() {
                   Qui Sommes-Nous ?
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">XETA Digital Corp</strong> est une agence digitale gabonaise fondée en 2019, spécialisée dans le développement de solutions web et mobiles innovantes.
+                  <strong className="text-foreground">XETA Digital Corp</strong> est une agence digitale gabonaise fondée en 2016, spécialisée dans le développement de solutions web et mobiles innovantes.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Basée à Libreville, nous combinons expertise technique internationale et compréhension approfondie du marché local pour offrir des solutions digitales qui propulsent la croissance de nos clients.
@@ -137,9 +137,9 @@ export default function APropos() {
                 </Card>
                 <Card className="p-6 text-center border-2 card-hover bg-gradient-to-br from-xeta-blue-light/20 to-transparent">
                   <div className="text-4xl font-heading font-bold text-xeta-blue mb-2">
-                    99%
+                    8+
                   </div>
-                  <p className="text-muted-foreground">Satisfaction</p>
+                  <p className="text-muted-foreground">Ans d'Expérience</p>
                 </Card>
               </div>
             </div>

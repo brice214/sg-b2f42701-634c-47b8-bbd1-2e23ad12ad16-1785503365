@@ -25,14 +25,14 @@ import {
 export default function EmailsProfessionnels() {
   const plans = [
     {
-      name: "Basic",
-      price: "2 500",
-      period: "/mois/utilisateur",
+      name: "Starter",
+      price: "29 900",
+      period: "FCFA/mois",
       description: "Pour les petites équipes",
-      users: "1-5 utilisateurs",
+      users: "15 boîtes email",
       features: [
-        "10 GB de stockage/utilisateur",
-        "Email @votreentreprise.ga",
+        "15 boîtes email @votreentreprise.ga",
+        "10 GB de stockage/boîte",
         "Protection anti-spam & antivirus",
         "Webmail sécurisé",
         "Support par email",
@@ -42,13 +42,13 @@ export default function EmailsProfessionnels() {
     },
     {
       name: "Business",
-      price: "5 000",
-      period: "/mois/utilisateur",
+      price: "79 900",
+      period: "FCFA/mois",
       description: "Idéal pour les PME gabonaises",
-      users: "5-50 utilisateurs",
+      users: "50 boîtes email",
       features: [
-        "50 GB de stockage/utilisateur",
-        "Email @votreentreprise.com",
+        "50 boîtes email @votreentreprise.com",
+        "50 GB de stockage/boîte",
         "Protection avancée anti-spam",
         "Calendrier et contacts partagés",
         "Migration depuis autre service",
@@ -59,12 +59,13 @@ export default function EmailsProfessionnels() {
       popular: true,
     },
     {
-      name: "Enterprise",
-      price: "Sur devis",
-      period: "",
-      description: "Solutions sur mesure pour administrations",
-      users: "50+ utilisateurs",
+      name: "Entreprise",
+      price: "179 900",
+      period: "FCFA/mois",
+      description: "Solutions pour grandes structures",
+      users: "150 boîtes email",
       features: [
+        "150 boîtes email personnalisées",
         "Stockage illimité",
         "Domaine personnalisé",
         "Archivage légal conforme",

@@ -164,7 +164,16 @@ export default function Home() {
 
       <main className="min-h-screen overflow-hidden">
         {/* Hero Section Ultra-Dynamique */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-xeta-blue via-xeta-blue-dark to-background pt-20">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+          {/* Image d'arrière-plan */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+            style={{ backgroundImage: 'url(/ChatGPT_Image_12_mai_2026_08_30_25.png)' }}
+          />
+          
+          {/* Overlay sombre pour lisibilité */}
+          <div className="absolute inset-0 bg-gradient-to-br from-xeta-blue/80 via-xeta-blue-dark/70 to-background/90" />
+          
           {/* Effets de fond animés */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(0,149,218,0.15),transparent)] animate-pulse" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(30,58,138,0.15),transparent)] animate-pulse" style={{ animationDelay: "1s" }} />

@@ -131,15 +131,15 @@ export default function APropos() {
                 </Card>
                 <Card className="p-6 text-center border-2 card-hover bg-gradient-to-br from-xeta-blue-light/20 to-transparent">
                   <div className="text-4xl font-heading font-bold text-xeta-blue mb-2">
-                    5+
+                    8+
                   </div>
                   <p className="text-muted-foreground">Ans d'Expérience</p>
                 </Card>
                 <Card className="p-6 text-center border-2 card-hover bg-gradient-to-br from-xeta-blue-light/20 to-transparent">
                   <div className="text-4xl font-heading font-bold text-xeta-blue mb-2">
-                    8+
+                    100%
                   </div>
-                  <p className="text-muted-foreground">Ans d'Expérience</p>
+                  <p className="text-muted-foreground">Satisfaction Client</p>
                 </Card>
               </div>
             </div>

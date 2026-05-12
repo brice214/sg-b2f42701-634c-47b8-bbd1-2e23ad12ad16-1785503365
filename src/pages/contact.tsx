@@ -19,6 +19,60 @@ import {
 } from "lucide-react";
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitStatus, setSubmitStatus] = React.useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus({
+          type: "success",
+          message: "Message envoyé avec succès ! Nous vous répondrons rapidement.",
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: "Erreur lors de l'envoi. Veuillez réessayer.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "Erreur de connexion. Veuillez réessayer.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const contactInfo = [
     {
       icon: MapPin,
@@ -102,12 +156,25 @@ export default function Contact() {
                 </div>
 
                 <Card className="p-8 border-2">
-                  <form className="space-y-6">
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    {submitStatus.type && (
+                      <div
+                        className={`p-4 rounded-lg ${
+                          submitStatus.type === "success"
+                            ? "bg-green-50 text-green-800 border border-green-200"
+                            : "bg-red-50 text-red-800 border border-red-200"
+                        }`}
+                      >
+                        {submitStatus.message}
+                      </div>
+                    )}
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="firstName">Prénom</Label>
                         <Input
                           id="firstName"
+                          name="firstName"
                           placeholder="Votre prénom"
                           required
                         />
@@ -116,6 +183,7 @@ export default function Contact() {
                         <Label htmlFor="lastName">Nom</Label>
                         <Input
                           id="lastName"
+                          name="lastName"
                           placeholder="Votre nom"
                           required
                         />
@@ -126,6 +194,7 @@ export default function Contact() {
                       <Label htmlFor="email">Email</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="votre@email.com"
                         required
@@ -136,6 +205,7 @@ export default function Contact() {
                       <Label htmlFor="phone">Téléphone</Label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
                         placeholder="+241 XX XX XX XX"
                       />
@@ -145,6 +215,7 @@ export default function Contact() {
                       <Label htmlFor="subject">Sujet</Label>
                       <Input
                         id="subject"
+                        name="subject"
                         placeholder="En quoi pouvons-nous vous aider ?"
                         required
                       />
@@ -154,15 +225,16 @@ export default function Contact() {
                       <Label htmlFor="message">Message</Label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Décrivez votre projet ou votre question..."
                         rows={6}
                         required
                       />
                     </div>
 
-                    <Button size="lg" className="w-full">
+                    <Button size="lg" className="w-full" type="submit" disabled={isSubmitting}>
                       <Send className="mr-2 w-5 h-5" />
-                      Envoyer le Message
+                      {isSubmitting ? "Envoi en cours..." : "Envoyer le Message"}
                     </Button>
                   </form>
                 </Card>

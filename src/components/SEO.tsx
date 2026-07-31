@@ -1,49 +1,95 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 interface SEOProps {
   title?: string;
   description?: string;
   image?: string;
   url?: string;
+  type?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  noindex?: boolean;
 }
 
-// SEO elements that can be used in _document.tsx (returns JSX without Head wrapper)
 export function SEOElements({
-  title = "Hello World",
-  description = "Welcome to my app",
+  title = "XETA-DIGITAL CORP - Agence Web #1 au Gabon",
+  description = "Leader du digital au Gabon. Développement web & mobile, hébergement premium et domaines. +500 projets réalisés.",
   image = "/og-image.png",
   url,
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  author,
+  noindex = false,
 }: SEOProps) {
+  const siteUrl = "https://xeta-digital.com";
+  const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
+  const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
   return (
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="icon" href="/favicon.ico" />
+      <link rel="canonical" href={fullUrl} />
+      
+      {/* Meta Robots */}
+      {noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      )}
+      
+      {/* Geo Tags - Ciblage Local Gabon */}
+      <meta name="geo.region" content="GA" />
+      <meta name="geo.placename" content="Libreville" />
+      <meta name="geo.position" content="0.416198;9.467268" />
+      <meta name="ICBM" content="0.416198, 9.467268" />
 
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
-      {url && <meta property="og:url" content={url} />}
-      <meta property="og:type" content="website" />
+      <meta property="og:image" content={fullImage} />
+      <meta property="og:url" content={fullUrl} />
+      <meta property="og:type" content={type} />
+      <meta property="og:site_name" content="XETA-DIGITAL CORP" />
+      <meta property="og:locale" content="fr_FR" />
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {author && <meta property="article:author" content={author} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      {image && <meta name="twitter:image" content={image} />}
+      <meta name="twitter:image" content={fullImage} />
+      <meta name="twitter:site" content="@xetadigital" />
 
-      {/* Viewport and mobile optimization */}
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      {/* Viewport and Mobile */}
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      <meta name="theme-color" content="#0095DA" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+      {/* Additional SEO */}
+      <meta name="format-detection" content="telephone=yes" />
+      <meta name="language" content="French" />
+      <meta name="author" content="XETA-DIGITAL CORP" />
+      <meta name="copyright" content="© 2026 XETA-DIGITAL CORP" />
     </>
   );
 }
 
-// SEO component for use in pages/_app.tsx or individual pages (uses next/head)
 export function SEO(props: SEOProps) {
+  const router = useRouter();
+  const url = props.url || router.asPath;
+
   return (
     <Head>
-      <SEOElements {...props} />
+      <SEOElements {...props} url={url} />
     </Head>
   );
 }

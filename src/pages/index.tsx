@@ -146,6 +146,78 @@ export default function Home() {
     },
   ];
 
+  // JSON-LD Structured Data pour SEO
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "XETA-DIGITAL CORP",
+    "alternateName": "XETA Digital",
+    "url": "https://xeta-digital.com",
+    "logo": "https://xeta-digital.com/logo-xeta.png",
+    "description": "Agence digitale gabonaise leader du développement web et mobile au Gabon. Création de sites web, applications mobiles, hébergement et noms de domaine.",
+    "foundingDate": "2016",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+241-77-69-47-23",
+      "contactType": "Service Client",
+      "areaServed": "GA",
+      "availableLanguage": ["fr", "en"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Libreville",
+      "addressCountry": "GA"
+    },
+    "sameAs": [
+      "https://www.facebook.com/XetaDigitalCorp/?locale=fr_FR",
+      "https://ga.linkedin.com/company/xeta-digital",
+      "https://www.sortlist.com/fr/agency/xeta-digital"
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "XETA-DIGITAL CORP",
+    "image": "https://xeta-digital.com/og-image.png",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Libreville",
+      "addressCountry": "GA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "0.416198",
+      "longitude": "9.467268"
+    },
+    "telephone": "+241-77-69-47-23",
+    "email": "contact@xeta-digital.com",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "500"
+    }
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "XETA-DIGITAL CORP",
+    "url": "https://xeta-digital.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://xeta-digital.com/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <>
       <SEO
@@ -153,6 +225,21 @@ export default function Home() {
         description="Leader du digital au Gabon. Développement web & mobile, hébergement premium et domaines. +500 projets réalisés, satisfaction garantie. Devis gratuit en 24h !"
         image="/og-image.png"
       />
+      
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+
       <Header />
       <FloatingCTA />
 

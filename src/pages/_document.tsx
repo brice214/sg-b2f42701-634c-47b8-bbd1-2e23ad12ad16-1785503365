@@ -4,8 +4,9 @@ import { SEOElements } from "@/components/SEO";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="fr">
       <Head>
+        <meta charSet="UTF-8" />
         <SEOElements />
         {/*
           CRITICAL: DO NOT REMOVE THIS SCRIPT

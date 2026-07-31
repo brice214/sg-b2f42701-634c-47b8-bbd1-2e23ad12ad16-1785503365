@@ -50,12 +50,12 @@ export default function SEOLocalGabon() {
     "image": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&q=80",
     "author": {
       "@type": "Organization",
-      "name": "XETA DIGITAL CORP",
+      "name": "XETA-DIGITAL CORP",
       "url": "https://xeta-digital.com"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "XETA DIGITAL CORP",
+      "name": "XETA-DIGITAL CORP",
       "logo": {
         "@type": "ImageObject",
         "url": "https://xeta-digital.com/logo-xeta.png"

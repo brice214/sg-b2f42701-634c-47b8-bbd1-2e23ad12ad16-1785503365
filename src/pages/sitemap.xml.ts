@@ -141,6 +141,12 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://xeta-digital.com/politique-confidentialite</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 
 </urlset>`;
 

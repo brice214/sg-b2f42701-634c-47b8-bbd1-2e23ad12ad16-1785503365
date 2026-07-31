@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
 import { BlogSidebar } from "@/components/BlogSidebar";
+import { Pagination } from "@/components/Pagination";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -25,6 +26,8 @@ export default function Blog() {
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
   const [activeCategory, setActiveCategory] = useState("Tous");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 8;
 
   // Gérer les paramètres d'URL (category query param)
   useEffect(() => {
@@ -33,17 +36,29 @@ export default function Blog() {
       const categoryName = categoryFromUrl.charAt(0).toUpperCase() + categoryFromUrl.slice(1);
       setActiveCategory(categoryName);
       setFilteredPosts(getPostsByCategory(categoryName));
+      setCurrentPage(1);
     }
   }, [router.query.category]);
 
   // L'article en vedette est toujours le dernier article publié (premier du tableau)
   const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : blogPosts[0];
 
+  // Posts pour la grille (excluant l'article vedette si on est sur "Tous" et sans recherche)
+  const showFeatured = !searchQuery && activeCategory === "Tous";
+  const postsForGrid = showFeatured ? filteredPosts.slice(1) : filteredPosts;
+
+  // Pagination logic
+  const totalPages = Math.ceil(postsForGrid.length / postsPerPage);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = postsForGrid.slice(indexOfFirstPost, indexOfLastPost);
+
   const categories = ["Tous", ...getCategoriesWithCount().map(cat => cat.name)];
 
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
     setSearchQuery("");
+    setCurrentPage(1);
     
     if (category === "Tous") {
       setFilteredPosts(blogPosts);
@@ -57,6 +72,7 @@ export default function Blog() {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     setActiveCategory("Tous");
+    setCurrentPage(1);
     
     if (query.trim()) {
       setFilteredPosts(searchPosts(query));
@@ -194,7 +210,7 @@ export default function Blog() {
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Blog Posts */}
               <div className="lg:col-span-2">
-                {filteredPosts.length === 0 ? (
+                {postsForGrid.length === 0 ? (
                   <Card className="p-12 text-center border-2">
                     <BookOpen className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
                     <h3 className="text-2xl font-heading font-bold mb-2">
@@ -207,68 +223,77 @@ export default function Blog() {
                       setSearchQuery("");
                       setActiveCategory("Tous");
                       setFilteredPosts(blogPosts);
+                      setCurrentPage(1);
                     }}>
                       Voir tous les articles
                     </Button>
                   </Card>
                 ) : (
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {filteredPosts.map((post, index) => {
-                      const Icon = post.icon;
-                      return (
-                        <Card key={index} className="overflow-hidden border-2 card-hover group flex flex-col">
-                          <div className="relative h-56 overflow-hidden">
-                            <Image
-                              src={post.image}
-                              alt={post.title}
-                              fill
-                              className="object-cover group-hover:scale-110 transition-transform duration-700"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                            <div className="absolute top-4 right-4">
-                              <div className="w-10 h-10 rounded-lg bg-xeta-blue/90 backdrop-blur-sm flex items-center justify-center">
-                                <Icon className="w-5 h-5 text-white" />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="p-6 flex-1 flex flex-col">
-                            <div className="flex items-center space-x-2 mb-3">
-                              <Badge variant="outline" className="rounded-full text-xs">
-                                {post.category}
-                              </Badge>
-                              <span className="text-xs text-muted-foreground">•</span>
-                              <div className="flex items-center text-xs text-muted-foreground">
-                                <Clock className="w-3 h-3 mr-1" />
-                                {post.readTime}
+                  <>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      {currentPosts.map((post, index) => {
+                        const Icon = post.icon;
+                        return (
+                          <Card key={index} className="overflow-hidden border-2 card-hover group flex flex-col">
+                            <div className="relative h-56 overflow-hidden">
+                              <Image
+                                src={post.image}
+                                alt={post.title}
+                                fill
+                                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                              <div className="absolute top-4 right-4">
+                                <div className="w-10 h-10 rounded-lg bg-xeta-blue/90 backdrop-blur-sm flex items-center justify-center">
+                                  <Icon className="w-5 h-5 text-white" />
+                                </div>
                               </div>
                             </div>
 
-                            <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-xeta-blue transition-colors line-clamp-2">
-                              {post.title}
-                            </h3>
-
-                            <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-2 flex-1">
-                              {post.excerpt}
-                            </p>
-
-                            <div className="flex items-center justify-between pt-4 border-t">
-                              <div className="flex items-center text-xs text-muted-foreground">
-                                <Calendar className="w-3 h-3 mr-1" />
-                                {post.date}
+                            <div className="p-6 flex-1 flex flex-col">
+                              <div className="flex items-center space-x-2 mb-3">
+                                <Badge variant="outline" className="rounded-full text-xs">
+                                  {post.category}
+                                </Badge>
+                                <span className="text-xs text-muted-foreground">•</span>
+                                <div className="flex items-center text-xs text-muted-foreground">
+                                  <Clock className="w-3 h-3 mr-1" />
+                                  {post.readTime}
+                                </div>
                               </div>
-                              <Link href={post.link}>
-                                <Button variant="ghost" size="sm" className="group/btn">
-                                  Lire
-                                  <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                                </Button>
-                              </Link>
+
+                              <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-xeta-blue transition-colors line-clamp-2">
+                                {post.title}
+                              </h3>
+
+                              <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-2 flex-1">
+                                {post.excerpt}
+                              </p>
+
+                              <div className="flex items-center justify-between pt-4 border-t">
+                                <div className="flex items-center text-xs text-muted-foreground">
+                                  <Calendar className="w-3 h-3 mr-1" />
+                                  {post.date}
+                                </div>
+                                <Link href={post.link}>
+                                  <Button variant="ghost" size="sm" className="group/btn">
+                                    Lire
+                                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                  </Button>
+                                </Link>
+                              </div>
                             </div>
-                          </div>
-                        </Card>
-                      );
-                    })}
-                  </div>
+                          </Card>
+                        );
+                      })}
+                    </div>
+
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={setCurrentPage}
+                    />
+                  </>
                 )}
               </div>
 

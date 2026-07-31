@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Pagination } from "@/components/Pagination";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -16,6 +17,9 @@ import {
 } from "lucide-react";
 
 export default function Realisations() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 4;
+
   const projects = [
     {
       title: "TSANGOO SAAS",
@@ -113,6 +117,12 @@ export default function Realisations() {
     { number: "99%", label: "Taux de Satisfaction" },
   ];
 
+  // Pagination logic
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+
   return (
     <>
       <SEO
@@ -165,7 +175,7 @@ export default function Realisations() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
-              {projects.map((project, index) => {
+              {currentProjects.map((project, index) => {
                 const Icon = project.icon;
                 return (
                   <Card key={index} className="overflow-hidden border-2 card-hover group">
@@ -257,6 +267,12 @@ export default function Realisations() {
                 );
               })}
             </div>
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </div>
         </section>
 

@@ -3,6 +3,7 @@ import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
+import { Building2, FileText, MapPin, Phone, Mail, Globe, User } from "lucide-react";
 
 export default function MentionsLegales() {
   return (
@@ -28,37 +29,69 @@ export default function MentionsLegales() {
         <section className="section-spacing">
           <div className="container">
             <div className="max-w-4xl mx-auto space-y-8">
-              <Card className="p-8 border-2">
-                <h2 className="text-2xl font-heading font-bold mb-4">
-                  Éditeur du Site
-                </h2>
-                <div className="space-y-2 text-muted-foreground">
-                  <p>
-                    <strong className="text-foreground">Raison sociale :</strong> XETA-DIGITAL CORP
-                  </p>
-                  <p>
-                    <strong className="text-foreground">Forme juridique :</strong> Société à Responsabilité Limitée (SARL)
-                  </p>
-                  <p>
-                    <strong className="text-foreground">Siège social :</strong> Libreville, Gabon
-                  </p>
-                  <p>
-                    <strong className="text-foreground">Email :</strong>{" "}
-                    <a href="mailto:contact@xeta-digital.com" className="text-xeta-blue hover:underline">
-                      contact@xeta-digital.com
-                    </a>
-                  </p>
-                  <p>
-                    <strong className="text-foreground">Téléphone :</strong>{" "}
-                    <a href="tel:+24177123456" className="text-xeta-blue hover:underline">
-                      +241 77 12 34 56
-                    </a>
-                  </p>
-                  <p>
-                    <strong className="text-foreground">Directeur de publication :</strong> Direction XETA-DIGITAL CORP
-                  </p>
+              <div className="bg-card p-8 rounded-2xl border">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-xeta-blue/10 rounded-xl flex items-center justify-center">
+                    <Building2 className="w-6 h-6 text-xeta-blue" />
+                  </div>
+                  <h3 className="text-xl font-heading font-bold">Éditeur du Site</h3>
                 </div>
-              </Card>
+                <div className="space-y-4 text-muted-foreground">
+                  <div className="flex items-start gap-3">
+                    <Building2 className="w-5 h-5 text-xeta-blue mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">Raison sociale</div>
+                      <div>XETA-DIGITAL CORP</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-xeta-blue mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">Forme juridique</div>
+                      <div>Entreprise Individuelle</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-xeta-blue mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">Siège social</div>
+                      <div>Libreville, Gabon</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-5 h-5 text-xeta-blue mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">Téléphone</div>
+                      <a href="tel:+241776947230" className="hover:text-xeta-blue transition-colors">
+                        +241 77 69 47 23
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-5 h-5 text-xeta-blue mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">Email</div>
+                      <a href="mailto:contact@xeta-digital.com" className="hover:text-xeta-blue transition-colors">
+                        contact@xeta-digital.com
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Globe className="w-5 h-5 text-xeta-blue mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">Site web</div>
+                      <div>xeta-digital.com</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <User className="w-5 h-5 text-xeta-blue mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-foreground mb-1">Directeur de publication</div>
+                      <div>Représentant légal de XETA-DIGITAL CORP</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <Card className="p-8 border-2">
                 <h2 className="text-2xl font-heading font-bold mb-4">

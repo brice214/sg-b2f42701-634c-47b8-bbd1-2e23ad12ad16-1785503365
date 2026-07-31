@@ -11,12 +11,14 @@ export default function Tarifs() {
   const webPlans = [
     {
       name: "Site Vitrine",
-      price: "350,000",
+      price: "70,000",
       period: "à partir de",
       description: "Parfait pour présenter votre activité en ligne",
       features: [
         "Design sur mesure responsive",
         "Jusqu'à 5 pages",
+        "En HTML/CSS (sans base de données)",
+        "Nom de domaine et hébergement gratuit 1 an",
         "Formulaire de contact",
         "Optimisation SEO de base",
         "Certificat SSL inclus",
@@ -67,26 +69,26 @@ export default function Tarifs() {
   const mobilePlans = [
     {
       name: "App Mobile Basique",
-      price: "650,000",
+      price: "300,000",
       period: "à partir de",
-      description: "Application mobile cross-platform",
+      description: "Application mobile Android",
       features: [
-        "iOS & Android (React Native)",
+        "Android uniquement",
         "Design UX/UI sur mesure",
         "5-8 écrans",
         "Notifications push",
-        "Publication sur les stores",
+        "Publication sur Play Store",
         "Formation",
         "Support 3 mois",
       ],
     },
     {
       name: "App Mobile Avancée",
-      price: "1,200,000",
+      price: "700,000",
       period: "à partir de",
       description: "Application avec fonctionnalités complexes",
       features: [
-        "iOS & Android natif ou cross-platform",
+        "Android & iOS",
         "Design premium",
         "Backend API inclus",
         "Authentification & profils",
@@ -147,7 +149,7 @@ export default function Tarifs() {
 
   const domainPrices = [
     { extension: ".com", price: "12,000 FCFA/an" },
-    { extension: ".ga (Gabon)", price: "8,000 FCFA/an" },
+    { extension: ".ga (Gabon)", price: "20,000 FCFA/an" },
     { extension: ".africa", price: "20,000 FCFA/an" },
     { extension: ".net", price: "13,000 FCFA/an" },
     { extension: ".org", price: "13,000 FCFA/an" },
@@ -424,10 +426,14 @@ export default function Tarifs() {
 
             <div className="text-center mt-12">
               <Button asChild size="lg">
-                <Link href="/services/domaine">
+                <a
+                  href="https://spiderhoster.com/portail/cart.php?a=add&domain=register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Voir Tous les Prix
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
+                </a>
               </Button>
             </div>
           </div>

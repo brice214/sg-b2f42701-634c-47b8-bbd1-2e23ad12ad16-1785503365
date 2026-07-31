@@ -27,7 +27,7 @@ export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("Tous");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 8;
+  const postsPerPage = 9;
 
   // Gérer les paramètres d'URL (category query param)
   useEffect(() => {

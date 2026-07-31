@@ -116,8 +116,8 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact - XETA Digital Corp | Agence Web Gabon"
-        description="Contactez XETA Digital Corp pour votre projet web, mobile ou hébergement. Notre équipe à Libreville, Gabon est prête à vous accompagner."
+        title="Contact - XETA-DIGITAL CORP | Agence Web Gabon"
+        description="Contactez XETA-DIGITAL CORP pour votre projet web, mobile ou hébergement. Notre équipe à Libreville, Gabon est prête à vous accompagner."
       />
       <Header />
 
@@ -289,7 +289,7 @@ export default function Contact() {
                     Suivez-nous
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Restez connecté avec XETA Digital sur les réseaux sociaux
+                    Restez connecté avec XETA-DIGITAL CORP sur les réseaux sociaux
                   </p>
                   <div className="flex items-center space-x-4">
                     {socialLinks.map((social, index) => {

@@ -8,8 +8,8 @@ export default function MentionsLegales() {
   return (
     <>
       <SEO
-        title="Mentions Légales - XETA Digital Corp"
-        description="Mentions légales et informations juridiques de XETA Digital Corp, agence digitale au Gabon."
+        title="Mentions Légales - XETA-DIGITAL CORP"
+        description="Mentions légales et informations juridiques de XETA-DIGITAL CORP, agence digitale au Gabon."
       />
       <Header />
 

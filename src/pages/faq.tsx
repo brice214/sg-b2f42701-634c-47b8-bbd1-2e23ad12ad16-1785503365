@@ -156,7 +156,7 @@ export default function FAQ() {
   return (
     <>
       <SEO
-        title="FAQ - Questions Fréquentes | XETA Digital Corp"
+        title="FAQ - Questions Fréquentes | XETA-DIGITAL CORP"
         description="Trouvez les réponses à vos questions sur nos services de développement web, mobile, hébergement et domaines au Gabon."
       />
       <Header />

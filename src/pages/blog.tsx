@@ -68,7 +68,7 @@ export default function Blog() {
   return (
     <>
       <SEO
-        title="Blog - XETA Digital Corp | Actualités Web & Tech Gabon"
+        title="Blog - XETA-DIGITAL CORP | Actualités Web & Tech Gabon"
         description="Découvrez nos articles sur le développement web, mobile, le design, le marketing digital et les tendances technologiques au Gabon."
       />
       <Header />

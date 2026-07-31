@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { GetServerSideProps } from 'next';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const robotsTxt = `# robots.txt pour XETA-DIGITAL CORP
 # Optimisé pour Google, Bing, et autres moteurs de recherche
 
@@ -45,7 +45,16 @@ Allow: /
 User-agent: Claude-Web
 Allow: /`;
 
-  res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400');
-  res.status(200).send(robotsTxt);
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400, stale-while-revalidate');
+  res.write(robotsTxt);
+  res.end();
+
+  return {
+    props: {},
+  };
+};
+
+export default function RobotsTxt() {
+  return null;
 }

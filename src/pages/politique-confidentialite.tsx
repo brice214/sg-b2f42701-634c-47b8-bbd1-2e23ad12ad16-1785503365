@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import Link from "next/link";
 import { Shield, Lock, Eye, Database, FileText, Mail, AlertCircle } from "lucide-react";
 
 export default function PolitiqueConfidentialite() {
@@ -347,12 +348,12 @@ export default function PolitiqueConfidentialite() {
                     <Mail className="w-5 h-5" />
                     Contactez-nous
                   </a>
-                  <a
+                  <Link
                     href="/contact"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-xl font-semibold hover:bg-white/20 transition-colors border border-white/20"
                   >
                     Formulaire de contact
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -365,7 +366,7 @@ export default function PolitiqueConfidentialite() {
             <div className="max-w-4xl mx-auto">
               <h3 className="text-xl font-heading font-bold mb-6">Documents connexes</h3>
               <div className="grid sm:grid-cols-2 gap-4">
-                <a
+                <Link
                   href="/mentions-legales"
                   className="flex items-center gap-3 p-4 bg-card rounded-xl border hover:border-xeta-blue/50 transition-colors group"
                 >
@@ -374,8 +375,8 @@ export default function PolitiqueConfidentialite() {
                     <div className="font-semibold group-hover:text-xeta-blue transition-colors">Mentions Légales</div>
                     <div className="text-sm text-muted-foreground">Informations juridiques</div>
                   </div>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/contact"
                   className="flex items-center gap-3 p-4 bg-card rounded-xl border hover:border-xeta-blue/50 transition-colors group"
                 >
@@ -384,7 +385,7 @@ export default function PolitiqueConfidentialite() {
                     <div className="font-semibold group-hover:text-xeta-blue transition-colors">Contact</div>
                     <div className="text-sm text-muted-foreground">Posez vos questions</div>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

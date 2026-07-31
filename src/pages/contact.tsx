@@ -83,8 +83,8 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Téléphone",
-      content: "+241 XX XX XX XX",
-      link: "tel:+241XXXXXXXX",
+      content: "+241 77 69 47 23",
+      link: "tel:+24177694723",
     },
     {
       icon: Mail,
@@ -104,12 +104,12 @@ export default function Contact() {
     {
       icon: Facebook,
       name: "Facebook",
-      url: "https://facebook.com/xetadigital",
+      url: "https://www.facebook.com/XetaDigitalCorp/?locale=fr_FR",
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
-      url: "https://linkedin.com/company/xeta-digital",
+      url: "https://ga.linkedin.com/company/xeta-digital",
     },
   ];
 
@@ -207,7 +207,7 @@ export default function Contact() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        placeholder="+241 XX XX XX XX"
+                        placeholder="+241 77 69 47 23"
                       />
                     </div>
 

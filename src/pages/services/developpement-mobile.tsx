@@ -107,7 +107,7 @@ export default function DeveloppementMobile() {
   return (
     <>
       <SEO
-        title="Développement Mobile iOS & Android | Applications Natives - XETA Digital"
+        title="Développement Mobile iOS & Android | Applications Natives - XETA-DIGITAL CORP"
         description="Création d'applications mobiles performantes pour iOS et Android au Gabon. React Native, Swift, Kotlin. Apps natives et cross-platform."
       />
       <Header />

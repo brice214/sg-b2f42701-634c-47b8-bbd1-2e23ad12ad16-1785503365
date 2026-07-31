@@ -116,8 +116,8 @@ export default function Realisations() {
   return (
     <>
       <SEO
-        title="Nos Réalisations - Portfolio XETA Digital Corp"
-        description="Découvrez nos projets web et mobile au Gabon. Sites web, applications mobiles, e-commerce et plus. Portfolio de XETA Digital Corp."
+        title="Nos Réalisations - Portfolio XETA-DIGITAL CORP"
+        description="Découvrez nos projets web et mobile au Gabon. Sites web, applications mobiles, e-commerce et plus. Portfolio de XETA-DIGITAL CORP."
       />
       <Header />
 

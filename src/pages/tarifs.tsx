@@ -159,7 +159,7 @@ export default function Tarifs() {
   return (
     <>
       <SEO
-        title="Tarifs - XETA Digital Corp | Développement Web & Mobile au Gabon"
+        title="Tarifs - XETA-DIGITAL CORP | Développement Web & Mobile au Gabon"
         description="Découvrez nos tarifs pour le développement web, mobile, l'hébergement et les noms de domaine. Solutions digitales accessibles et transparentes."
       />
       <Header />

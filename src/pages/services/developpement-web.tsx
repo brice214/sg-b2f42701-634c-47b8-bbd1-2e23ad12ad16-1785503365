@@ -132,7 +132,7 @@ export default function DeveloppementWeb() {
   return (
     <>
       <SEO
-        title="Développement Web au Gabon | Sites Modernes et Performants - XETA Digital"
+        title="Développement Web au Gabon | Sites Modernes et Performants - XETA-DIGITAL CORP"
         description="Création de sites web professionnels, e-commerce et applications web sur mesure au Gabon. React, Next.js, performance optimale. Devis gratuit."
       />
       <Header />
@@ -191,7 +191,7 @@ export default function DeveloppementWeb() {
             <div className="text-center mb-16 space-y-4">
               <Badge className="mb-4">Avantages</Badge>
               <h2 className="text-4xl md:text-5xl font-heading font-bold">
-                Pourquoi Choisir XETA ?
+                Pourquoi Choisir XETA-DIGITAL CORP ?
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Une expertise technique pointue au service de votre réussite digitale

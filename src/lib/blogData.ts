@@ -15,8 +15,8 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    title: "Datacenter au Gabon : Faut-il Vraiment Héberger Localement ?",
-    excerpt: "L'inauguration récente d'un datacenter au Gabon soulève une question cruciale : pourquoi les serveurs externes sont souvent plus performants et sécurisés que les solutions locales.",
+    title: "Nouveau Datacenter au Gabon : Serveurs Locaux ou Cloud International ?",
+    excerpt: "Le datacenter gabonais marque une avancée majeure. Découvrez comment choisir la meilleure solution d'hébergement selon votre type de projet et vos besoins spécifiques.",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
     author: "Tech Innovation Team",
     date: "31 Juillet 2026",

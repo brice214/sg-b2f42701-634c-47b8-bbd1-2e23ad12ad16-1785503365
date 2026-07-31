@@ -55,7 +55,7 @@ export default function MentionsLegales() {
                     </a>
                   </p>
                   <p>
-                    <strong className="text-foreground">Directeur de publication :</strong> Direction XETA Digital Corp
+                    <strong className="text-foreground">Directeur de publication :</strong> Direction XETA-DIGITAL CORP
                   </p>
                 </div>
               </Card>

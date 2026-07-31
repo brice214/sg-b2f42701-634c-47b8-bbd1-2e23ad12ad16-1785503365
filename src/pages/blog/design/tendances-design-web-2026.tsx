@@ -41,11 +41,11 @@ export default function TendancesDesignWeb2026() {
             dateModified: "2026-03-10T08:00:00+01:00",
             author: {
               "@type": "Organization",
-              name: "XETA Digital Corp - Design Team"
+              name: "XETA-DIGITAL CORP - Design Team"
             },
             publisher: {
               "@type": "Organization",
-              name: "XETA Digital Corp",
+              name: "XETA-DIGITAL CORP",
               logo: {
                 "@type": "ImageObject",
                 url: "/logo-xeta.png"

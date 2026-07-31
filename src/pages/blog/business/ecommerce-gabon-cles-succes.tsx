@@ -307,7 +307,7 @@ export default function EcommerceGabonArticle() {
             },
             publisher: {
               "@type": "Organization",
-              name: "XETA Digital Corp",
+              name: "XETA-DIGITAL CORP",
               logo: {
                 "@type": "ImageObject",
                 url: "https://xeta-digital.com/logo-xeta.png",
@@ -652,7 +652,7 @@ export default function EcommerceGabonArticle() {
                     <AlertDescription className="text-base">
                       <strong>Notre Recommandation :</strong> Si vous êtes sérieux et visez le long-terme, 
                       investissez dans une solution sur-mesure. Elle s'adaptera à votre croissance et vous 
-                      appartiendra à 100%. XETA Digital Corp développe des e-commerces clés-en-main optimisés 
+                      appartiendra à 100%. XETA-DIGITAL CORP développe des e-commerces clés-en-main optimisés 
                       pour le marché gabonais. N'oubliez pas également de <Link href="/blog/securite/cybersecurite-proteger-site-web" className="text-xeta-blue hover:underline">sécuriser votre boutique en ligne</Link> dès le départ.
                     </AlertDescription>
                   </Alert>
@@ -781,7 +781,7 @@ export default function EcommerceGabonArticle() {
                           Prêt à Lancer Votre E-commerce ?
                         </h3>
                         <p className="text-white/90 mb-6 text-lg">
-                          XETA Digital Corp vous accompagne de A à Z : stratégie, développement, intégration 
+                          XETA-DIGITAL CORP vous accompagne de A à Z : stratégie, développement, intégration 
                           paiement mobile, formation, et support continu. Parlons de votre projet.
                         </p>
                         <Button size="lg" className="bg-white text-xeta-blue hover:bg-white/90">

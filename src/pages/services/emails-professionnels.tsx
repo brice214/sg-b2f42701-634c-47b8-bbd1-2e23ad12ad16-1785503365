@@ -146,7 +146,7 @@ export default function EmailsProfessionnels() {
   return (
     <>
       <SEO
-        title="Emails Professionnels au Gabon - Messagerie Entreprise | XETA Digital"
+        title="Emails Professionnels au Gabon - Messagerie Entreprise | XETA-DIGITAL CORP"
         description="Solutions d'emails professionnels pour entreprises et administrations gabonaises. Messagerie sécurisée, synchronisation multi-appareils, support 24/7. À partir de 2500 FCFA/mois."
       />
       <Header />

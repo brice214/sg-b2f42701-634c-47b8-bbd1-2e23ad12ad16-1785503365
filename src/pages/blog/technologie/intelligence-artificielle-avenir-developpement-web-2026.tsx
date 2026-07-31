@@ -901,7 +901,7 @@ export default function IntelligenceArtificielleAvenir() {
                     Besoin d'Aide pour Intégrer l'IA dans Vos Projets ?
                   </h3>
                   <p className="text-lg mb-6 opacity-90">
-                    XETA Digital accompagne les entreprises gabonaises dans leur transformation numérique avec l'IA. 
+                    XETA-DIGITAL CORP accompagne les entreprises gabonaises dans leur transformation numérique avec l'IA. 
                     Formation, consulting, développement assisté par IA.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -949,11 +949,11 @@ export default function IntelligenceArtificielleAvenir() {
             "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
             "author": {
               "@type": "Organization",
-              "name": "XETA Digital"
+              "name": "XETA-DIGITAL CORP"
             },
             "publisher": {
               "@type": "Organization",
-              "name": "XETA Digital",
+              "name": "XETA-DIGITAL CORP",
               "logo": {
                 "@type": "ImageObject",
                 "url": "https://xeta-digital.com/logo-xeta.png"

@@ -214,7 +214,7 @@ export default function Domaine() {
           <div className="container">
             <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
               <h2 className="text-4xl md:text-5xl font-heading font-bold">
-                Pourquoi Choisir XETA Digital ?
+                Pourquoi Choisir XETA-DIGITAL CORP ?
               </h2>
             </div>
 

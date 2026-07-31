@@ -267,7 +267,7 @@ export default function ReactVsVueArticle() {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "XETA Digital Corp",
+      "name": "XETA-DIGITAL CORP",
       "logo": {
         "@type": "ImageObject",
         "url": "https://xetadigitalcorp.com/logo-xeta.png"
@@ -829,7 +829,7 @@ export default function ReactVsVueArticle() {
                             Besoin d'Aide Pour Votre Projet ?
                           </h3>
                           <p className="text-white/90 mb-6 text-lg">
-                            XETA Digital Corp maîtrise React et Vue.js. Nous analysons vos besoins 
+                            XETA-DIGITAL CORP maîtrise React et Vue.js. Nous analysons vos besoins 
                             et vous recommandons la meilleure technologie pour votre projet au Gabon.
                           </p>
                           <Button size="lg" className="bg-white text-xeta-blue hover:bg-white/90">

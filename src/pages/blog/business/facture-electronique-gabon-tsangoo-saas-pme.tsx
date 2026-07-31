@@ -792,7 +792,7 @@ export default function TsangooSaasGabon() {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "XETA DIGITAL CORP",
+              "name": "XETA-DIGITAL CORP",
               "logo": {
                 "@type": "ImageObject",
                 "url": "https://xetadigital.com/logo-xeta.png"

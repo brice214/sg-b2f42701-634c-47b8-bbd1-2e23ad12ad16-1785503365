@@ -122,7 +122,7 @@ export default function Hebergement() {
   return (
     <>
       <SEO
-        title="Hébergement Web au Gabon - XETA Digital Corp"
+        title="Hébergement Web au Gabon - XETA-DIGITAL CORP"
         description="Solutions d'hébergement web fiables et performantes au Gabon. Serveurs SSD, SSL gratuit, support 24/7. Hébergement professionnel pour votre site web."
       />
       <Header />

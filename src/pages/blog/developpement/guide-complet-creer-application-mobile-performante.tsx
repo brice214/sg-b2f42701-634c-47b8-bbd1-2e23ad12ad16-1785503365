@@ -19,7 +19,7 @@ export default function ArticleMobile() {
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=80",
     author: {
       name: "Mobile Dev Team",
-      role: "Experts Mobile chez XETA Digital",
+      role: "Experts Mobile chez XETA-DIGITAL CORP",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80",
     },
     date: "5 Mars 2026",
@@ -49,7 +49,7 @@ export default function ArticleMobile() {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "XETA Digital Corp",
+      "name": "XETA-DIGITAL CORP",
       "logo": {
         "@type": "ImageObject",
         "url": "https://xeta-digital.ga/logo-xeta.png"
@@ -321,7 +321,7 @@ export default function ArticleMobile() {
                   </p>
                   
                   <p>
-                    Chez <strong>XETA Digital Corp</strong>, nous accompagnons les entreprises dans le développement de bout en bout de leurs applications mobiles, de l'UX Design jusqu'à la publication sur l'App Store et Google Play.
+                    Chez <strong>XETA-DIGITAL CORP</strong>, nous accompagnons les entreprises dans le développement de bout en bout de leurs applications mobiles, de l'UX Design jusqu'à la publication sur l'App Store et Google Play.
                   </p>
                 </div>
 

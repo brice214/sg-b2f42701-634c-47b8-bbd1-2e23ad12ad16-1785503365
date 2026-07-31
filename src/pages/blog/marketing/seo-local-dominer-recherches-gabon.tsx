@@ -1004,7 +1004,7 @@ export default function SEOLocalGabon() {
                     <div className="bg-gradient-to-r from-xeta-blue/10 to-xeta-orange/10 rounded-2xl p-8 border-2 border-xeta-blue/20">
                       <h3 className="text-2xl font-bold mb-4">🚀 Prêt à Passer à l'Action ?</h3>
                       <p className="text-muted-foreground mb-6">
-                        Chez <strong>XETA DIGITAL CORP</strong>, nous aidons les entreprises gabonaises 
+                        Chez <strong>XETA-DIGITAL CORP</strong>, nous aidons les entreprises gabonaises 
                         à dominer leur marché local grâce au SEO. Nos clients obtiennent en moyenne 
                         <strong> +230% de trafic organique</strong> en 6 mois.
                       </p>
@@ -1044,7 +1044,7 @@ export default function SEOLocalGabon() {
                       MT
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Marketing Team - XETA DIGITAL CORP</h3>
+                      <h3 className="font-bold text-lg mb-2">Marketing Team - XETA-DIGITAL CORP</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                         Notre équipe marketing cumule plus de 15 ans d'expérience en SEO local et marketing digital 
                         pour les entreprises gabonaises. Nous avons aidé 80+ entreprises à atteindre la première 

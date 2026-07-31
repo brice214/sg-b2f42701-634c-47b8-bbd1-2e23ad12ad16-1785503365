@@ -215,7 +215,7 @@ export default function CybersecuriteArticle() {
             },
             publisher: {
               "@type": "Organization",
-              name: "XETA Digital Corp",
+              name: "XETA-DIGITAL CORP",
               logo: {
                 "@type": "ImageObject",
                 url: "https://xeta-digital.com/logo-xeta.png",
@@ -620,7 +620,7 @@ export default function CybersecuriteArticle() {
                           Besoin d'un Audit de Sécurité ?
                         </h3>
                         <p className="text-white/90 mb-6 text-lg">
-                          XETA Digital Corp offre un audit de sécurité gratuit pour analyser les 
+                          XETA-DIGITAL CORP offre un audit de sécurité gratuit pour analyser les 
                           vulnérabilités de votre site web et vous proposer un plan d'action personnalisé.
                         </p>
                         <Button size="lg" className="bg-white text-xeta-blue hover:bg-white/90">

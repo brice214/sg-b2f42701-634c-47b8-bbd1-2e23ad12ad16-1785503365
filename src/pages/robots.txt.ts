@@ -1,4 +1,7 @@
-# robots.txt pour XETA-DIGITAL CORP
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const robotsTxt = `# robots.txt pour XETA-DIGITAL CORP
 # Optimisé pour Google, Bing, et autres moteurs de recherche
 
 User-agent: *
@@ -40,4 +43,9 @@ User-agent: anthropic-ai
 Allow: /
 
 User-agent: Claude-Web
-Allow: /
+Allow: /`;
+
+  res.setHeader('Content-Type', 'text/plain');
+  res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400');
+  res.status(200).send(robotsTxt);
+}

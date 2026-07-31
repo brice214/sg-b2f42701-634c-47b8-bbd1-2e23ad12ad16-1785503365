@@ -208,6 +208,7 @@ export default function Contact() {
                         name="phone"
                         type="tel"
                         placeholder="+241 77 69 47 23"
+                        required
                       />
                     </div>
 

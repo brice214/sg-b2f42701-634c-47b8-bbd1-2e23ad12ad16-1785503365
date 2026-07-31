@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Linkedin, Mail, Phone, MapPin, Globe } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,7 +23,7 @@ export function Footer() {
             </p>
             <div className="flex items-center space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/XetaDigitalCorp/?locale=fr_FR"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-xeta-blue transition-colors"
@@ -31,12 +31,20 @@ export function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://ga.linkedin.com/company/xeta-digital"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-xeta-blue transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.sortlist.com/fr/agency/xeta-digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-xeta-blue transition-colors"
+              >
+                <Globe className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -105,7 +113,7 @@ export function Footer() {
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
                 <span className="text-white/80 text-sm">
-                  +241 XX XX XX XX
+                  +241 77 69 47 23
                 </span>
               </li>
               <li className="flex items-start space-x-3">

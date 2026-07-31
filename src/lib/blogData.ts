@@ -1,4 +1,4 @@
-import { Code2, TrendingUp, Globe, Smartphone, Lightbulb, ShieldAlert, Briefcase } from "lucide-react";
+import { Code2, TrendingUp, Globe, Smartphone, Lightbulb, ShieldAlert, Briefcase, Server } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface BlogPost {
@@ -14,6 +14,17 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "Datacenter au Gabon : Faut-il Vraiment Héberger Localement ?",
+    excerpt: "L'inauguration récente d'un datacenter au Gabon soulève une question cruciale : pourquoi les serveurs externes sont souvent plus performants et sécurisés que les solutions locales.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    author: "Tech Innovation Team",
+    date: "31 Juillet 2026",
+    readTime: "12 min",
+    category: "Technologie",
+    icon: Server,
+    link: "/blog/technologie/datacenter-gabon-serveurs-locaux-vs-cloud-international",
+  },
   {
     title: "La Facture Électronique au Gabon : Tsangoo SaaS au Service des PME et Compagnies Gabonaises",
     excerpt: "Découvrez comment Tsangoo révolutionne la gestion des entreprises gabonaises avec une solution conforme OHADA/SYSCOHADA",

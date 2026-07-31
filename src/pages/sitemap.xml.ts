@@ -121,9 +121,16 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Blog: Technologie -->
+  <url>
+    <loc>https://xeta-digital.com/blog/technologie/datacenter-gabon-serveurs-locaux-vs-cloud-international</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://xeta-digital.com/blog/technologie/intelligence-artificielle-avenir-developpement-web-2026</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

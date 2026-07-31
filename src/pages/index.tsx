@@ -438,17 +438,12 @@ export default function Home() {
                   </p>
 
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-xeta-blue to-blue-600 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-xeta-blue to-blue-600 flex items-center justify-center text-white font-semibold">
+                      {testimonial.name.charAt(0)}
                     </div>
                     <div>
                       <div className="font-semibold">{testimonial.name}</div>
                       <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                      <div className="text-xs text-muted-foreground">{testimonial.company}</div>
                     </div>
                   </div>
                 </Card>

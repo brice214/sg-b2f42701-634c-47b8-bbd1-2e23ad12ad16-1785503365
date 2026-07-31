@@ -61,7 +61,7 @@ export default function APropos() {
   ];
 
   const milestones = [
-    { year: "2016", event: "Création de XETA Digital" },
+    { year: "2016", event: "Création de XETA-DIGITAL CORP" },
     { year: "2018", event: "Lancement des services d'hébergement" },
     { year: "2021", event: "Expansion mobile et 30+ clients" },
     { year: "2024", event: "50+ projets livrés avec succès" },
@@ -70,8 +70,8 @@ export default function APropos() {
   return (
     <>
       <SEO
-        title="À Propos - XETA Digital Corp | Notre Histoire et Vision"
-        description="Découvrez XETA Digital Corp, agence web gabonaise pionnière du développement web et mobile au Gabon. Notre mission, nos valeurs et notre équipe."
+        title="À Propos - XETA-DIGITAL CORP | Notre Histoire et Vision"
+        description="Découvrez XETA-DIGITAL CORP, agence web gabonaise pionnière du développement web et mobile au Gabon. Notre mission, nos valeurs et notre équipe."
       />
       <Header />
 
@@ -106,7 +106,7 @@ export default function APropos() {
                   Qui Sommes-Nous ?
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">XETA Digital Corp</strong> est une agence digitale gabonaise fondée en 2016, spécialisée dans le développement de solutions web et mobiles innovantes.
+                  <strong className="text-foreground">XETA-DIGITAL CORP</strong> est une agence digitale gabonaise fondée en 2016, spécialisée dans le développement de solutions web et mobiles innovantes.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Basée à Libreville, nous combinons expertise technique internationale et compréhension approfondie du marché local pour offrir des solutions digitales qui propulsent la croissance de nos clients.

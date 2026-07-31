@@ -86,27 +86,21 @@ export default function Home() {
   const testimonials = [
     {
       name: "Marie Koumba",
-      role: "Directrice Marketing",
-      company: "Entreprise Gabonaise",
-      content: "XETA Digital a transformé notre présence en ligne. Leur expertise technique et leur compréhension de nos besoins sont exceptionnelles. Notre site e-commerce génère maintenant 3x plus de ventes !",
+      role: "CEO, Boutique en ligne Mode Afrique",
+      content: "XETA-DIGITAL CORP a transformé notre présence en ligne. Leur expertise technique et leur compréhension de nos besoins sont exceptionnelles. Notre site e-commerce génère maintenant 3x plus de ventes !",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400",
     },
     {
-      name: "Jean-Pierre Obame",
-      role: "CEO",
-      company: "StartUp Tech Gabon",
-      content: "L'application mobile développée par XETA Digital a dépassé nos attentes. Interface intuitive, performance excellente et accompagnement professionnel tout au long du projet.",
+      name: "Patrick Nguema",
+      role: "Directeur, StartUp TechGabon",
+      content: "L'application mobile développée par XETA-DIGITAL CORP a dépassé nos attentes. Interface intuitive, performance excellente et accompagnement professionnel tout au long du projet.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
     },
     {
-      name: "Sophie Nguema",
-      role: "Gérante",
-      company: "Boutique en Ligne",
-      content: "Service d'hébergement ultra-fiable et support client réactif. Mon site n'a jamais connu de panne depuis 2 ans. Je recommande vivement XETA Digital !",
+      name: "David Obame",
+      role: "Gérant, Cabinet Comptable",
+      content: "Service d'hébergement ultra-fiable et support client réactif. Mon site n'a jamais connu de panne depuis 2 ans. Je recommande vivement XETA-DIGITAL CORP !",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400",
     },
   ];
 
@@ -155,7 +149,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="XETA Digital Corp - Agence Web #1 au Gabon | Développement & Hébergement"
+        title="XETA-DIGITAL CORP - Agence Web #1 au Gabon | Développement & Hébergement"
         description="Leader du digital au Gabon. Développement web & mobile, hébergement premium et domaines. +500 projets réalisés, satisfaction garantie. Devis gratuit en 24h !"
         image="/og-image.png"
       />
@@ -311,7 +305,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pourquoi XETA Digital */}
+        {/* Pourquoi XETA-DIGITAL CORP */}
         <section className="section-spacing bg-gradient-to-br from-xeta-blue-light/10 via-transparent to-xeta-blue-light/5">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -561,7 +555,7 @@ export default function Home() {
                 </h2>
 
                 <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
-                  Rejoignez les 500+ entreprises gabonaises qui ont boosté leur activité avec XETA Digital. Devis gratuit et sans engagement en 24h !
+                  Rejoignez les 500+ entreprises gabonaises qui ont boosté leur activité avec XETA-DIGITAL CORP. Devis gratuit et sans engagement en 24h !
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">

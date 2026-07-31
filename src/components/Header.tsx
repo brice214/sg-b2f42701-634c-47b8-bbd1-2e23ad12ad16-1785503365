@@ -65,10 +65,10 @@ export function Header() {
       >
         <nav className="container">
           <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center space-x-3 group">
+            <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo-xeta.png"
-                alt="XETA Digital Corp"
+                alt="XETA-DIGITAL CORP"
                 width={180}
                 height={50}
                 className="h-12 w-auto group-hover:scale-105 transition-transform"

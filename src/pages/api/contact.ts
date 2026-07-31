@@ -59,7 +59,7 @@ export default async function handler(
         <div class="container">
           <div class="header">
             <h2 style="margin: 0;">📧 Nouveau message de contact</h2>
-            <p style="margin: 5px 0 0 0; opacity: 0.9;">XETA Digital - Site Web</p>
+            <p style="margin: 5px 0 0 0; opacity: 0.9;">XETA-DIGITAL CORP - Site Web</p>
           </div>
           <div class="content">
             <div class="field">
@@ -85,7 +85,7 @@ export default async function handler(
           </div>
           <div class="footer">
             <p style="margin: 0;">Ce message a été envoyé depuis le formulaire de contact de xeta-digital.com</p>
-            <p style="margin: 5px 0 0 0;">© ${new Date().getFullYear()} XETA Digital Corp - Tous droits réservés</p>
+            <p style="margin: 5px 0 0 0;">© ${new Date().getFullYear()} XETA-DIGITAL CORP - Tous droits réservés</p>
           </div>
         </div>
       </body>
@@ -94,7 +94,7 @@ export default async function handler(
 
   // Version texte brut pour les clients email qui ne supportent pas HTML
   const textMessage = `
-Nouveau message de contact depuis XETA Digital
+Nouveau message de contact depuis XETA-DIGITAL CORP
 
 Nom: ${firstName} ${lastName}
 Email: ${email}
@@ -108,13 +108,15 @@ ${message}
 Ce message a été envoyé depuis le formulaire de contact de xeta-digital.com
   `.trim();
 
+  const subjectEmail = `Nouveau message de contact depuis XETA-DIGITAL CORP`;
+
   try {
     // Envoi de l'email
     await transporter.sendMail({
-      from: `"XETA Digital - Contact" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      from: `"XETA-DIGITAL CORP - Contact" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to: "contact@xeta-digital.com",
       replyTo: email, // Pour répondre directement au client
-      subject: `[XETA Digital] ${subject}`,
+      subject: `[XETA-DIGITAL CORP] ${subject}`,
       text: textMessage,
       html: htmlMessage,
     });

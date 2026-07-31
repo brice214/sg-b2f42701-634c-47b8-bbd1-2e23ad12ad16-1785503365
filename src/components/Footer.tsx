@@ -13,7 +13,7 @@ export function Footer() {
           <div className="space-y-6">
             <Image
               src="/logo-xeta.png"
-              alt="XETA Digital Corp"
+              alt="XETA-DIGITAL CORP"
               width={180}
               height={50}
               className="h-12 w-auto brightness-0 invert"
@@ -128,8 +128,8 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <p className="text-white/60 text-sm">
-              © {currentYear} XETA Digital Corp. Tous droits réservés.
+            <p className="text-sm text-white/60">
+              © {currentYear} XETA-DIGITAL CORP. Tous droits réservés.
             </p>
             <div className="flex items-center space-x-6 text-sm">
               <Link href="/mentions-legales" className="text-white/60 hover:text-white transition-colors">

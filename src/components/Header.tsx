@@ -34,9 +34,9 @@ export function Header() {
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
-              <a href="tel:+241XXXXXXXX" className="flex items-center gap-2 hover:text-xeta-blue-light transition-colors">
+              <a href="tel:+24177694723" className="flex items-center gap-2 hover:text-xeta-blue-light transition-colors">
                 <Phone className="w-4 h-4" />
-                <span>+241 XX XX XX XX</span>
+                <span>+241 77 69 47 23</span>
               </a>
               <a href="mailto:contact@xeta-digital.com" className="flex items-center gap-2 hover:text-xeta-blue-light transition-colors">
                 <Mail className="w-4 h-4" />

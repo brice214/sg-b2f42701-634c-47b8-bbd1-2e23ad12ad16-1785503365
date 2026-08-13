@@ -6,6 +6,31 @@ type ResponseData = {
   success: boolean;
 };
 
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  
+  if (!secretKey) {
+    console.error("RECAPTCHA_SECRET_KEY not configured");
+    return false;
+  }
+
+  try {
+    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `secret=${secretKey}&response=${token}`,
+    });
+
+    const data = await response.json();
+    return data.success && data.score >= 0.5;
+  } catch (error) {
+    console.error("reCAPTCHA verification error:", error);
+    return false;
+  }
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
@@ -17,12 +42,28 @@ export default async function handler(
     });
   }
 
-  const { firstName, lastName, email, phone, subject, message } = req.body;
+  const { firstName, lastName, email, phone, subject, message, recaptchaToken } = req.body;
 
   if (!firstName || !lastName || !email || !subject || !message) {
     return res.status(400).json({ 
       message: "Tous les champs obligatoires doivent être remplis", 
       success: false 
+    });
+  }
+
+  // Vérification reCAPTCHA
+  if (!recaptchaToken) {
+    return res.status(400).json({
+      message: "Vérification de sécurité manquante",
+      success: false,
+    });
+  }
+
+  const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);
+  if (!isValidRecaptcha) {
+    return res.status(400).json({
+      message: "Vérification de sécurité échouée. Veuillez réessayer.",
+      success: false,
     });
   }
 

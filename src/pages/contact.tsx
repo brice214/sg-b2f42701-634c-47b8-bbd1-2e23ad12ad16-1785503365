@@ -18,6 +18,15 @@ import {
   Linkedin,
 } from "lucide-react";
 
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<{
@@ -41,12 +50,26 @@ export default function Contact() {
     };
 
     try {
+      // Obtenir le token reCAPTCHA
+      const recaptchaToken = await new Promise<string>((resolve, reject) => {
+        if (!window.grecaptcha) {
+          reject(new Error("reCAPTCHA not loaded"));
+          return;
+        }
+        window.grecaptcha.ready(() => {
+          window.grecaptcha
+            .execute("6LeCAYQtAAAAACPhnsoYKwhLfprUW8sw2Wb3UUBH", { action: "submit_contact_form" })
+            .then(resolve)
+            .catch(reject);
+        });
+      });
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, recaptchaToken }),
       });
 
       const result = await response.json();

@@ -8,6 +8,11 @@ export default function Document() {
       <Head>
         <meta charSet="UTF-8" />
         <SEOElements />
+        <script
+          src="https://www.google.com/recaptcha/api.js?render=6LeCAYQtAAAAACPhnsoYKwhLfprUW8sw2Wb3UUBH"
+          async
+          defer
+        />
         {/*
           CRITICAL: DO NOT REMOVE THIS SCRIPT
           The Softgen AI monitoring script is essential for core app functionality.

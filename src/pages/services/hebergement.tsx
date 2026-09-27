@@ -216,7 +216,13 @@ export default function Hebergement() {
                       plan.popular ? "" : "variant-outline"
                     }`}
                   >
-                    <Link href="/contact">Commander</Link>
+                    <a
+                      href="https://spiderhoster.com/portail/index.php?rp=/store/hebergement-web"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Commander
+                    </a>
                   </Button>
                 </Card>
               ))}

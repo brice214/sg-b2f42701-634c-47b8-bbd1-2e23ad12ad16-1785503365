@@ -99,14 +99,14 @@ export default function Realisations() {
       playStoreLink: "https://play.google.com/store/apps/details?id=com.ft.keyake&hl=fr",
     },
     {
-      title: "Site Corporate Multilingue",
-      category: "Site Vitrine",
-      type: "web",
-      description: "Site institutionnel avec gestion multilingue et CMS personnalisé",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      technologies: ["Next.js", "i18n", "Headless CMS"],
-      results: ["3 langues", "SEO optimisé", "Design premium"],
-      icon: Globe,
+      title: "LERESOO",
+      category: "Application Mobile",
+      type: "mobile",
+      description: "Application mobile de réseau social pensée pour renforcer les liens au sein des cercles familiaux, relationnels et d'affaires",
+      image: "/leresoo-cover.png",
+      technologies: ["React Native", "Cloud", "Real-time", "Messagerie"],
+      results: ["Cercles privés sécurisés", "Partage familial simplifié", "Réseau professionnel intégré"],
+      icon: Smartphone,
     },
   ];
 

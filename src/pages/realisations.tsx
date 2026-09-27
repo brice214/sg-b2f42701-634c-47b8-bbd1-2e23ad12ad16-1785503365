@@ -18,6 +18,7 @@ import {
 
 export default function Realisations() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeFilter, setActiveFilter] = useState<"all" | "web" | "mobile">("all");
   const projectsPerPage = 4;
 
   const projects = [
@@ -117,11 +118,21 @@ export default function Realisations() {
     { number: "99%", label: "Taux de Satisfaction" },
   ];
 
+  const handleFilterChange = (filter: "all" | "web" | "mobile") => {
+    setActiveFilter(filter);
+    setCurrentPage(1);
+  };
+
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.type === activeFilter);
+
   // Pagination logic
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
 
   return (
     <>
@@ -172,6 +183,30 @@ export default function Realisations() {
               <p className="text-xl text-muted-foreground">
                 Des solutions digitales qui génèrent des résultats concrets
               </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+              <Button
+                variant={activeFilter === "all" ? "default" : "outline"}
+                onClick={() => handleFilterChange("all")}
+              >
+                <Code2 className="w-4 h-4 mr-2" />
+                Tous les projets
+              </Button>
+              <Button
+                variant={activeFilter === "web" ? "default" : "outline"}
+                onClick={() => handleFilterChange("web")}
+              >
+                <Globe className="w-4 h-4 mr-2" />
+                Applications Web
+              </Button>
+              <Button
+                variant={activeFilter === "mobile" ? "default" : "outline"}
+                onClick={() => handleFilterChange("mobile")}
+              >
+                <Smartphone className="w-4 h-4 mr-2" />
+                Applications Mobiles
+              </Button>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">

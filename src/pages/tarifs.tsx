@@ -388,10 +388,14 @@ export default function Tarifs() {
                     className="w-full"
                     variant={plan.popular ? "default" : "outline"}
                   >
-                    <Link href="/contact">
+                    <a
+                      href="https://spiderhoster.com/portail/index.php?rp=/store/hebergement-web"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Commander
                       <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
+                    </a>
                   </Button>
                 </Card>
               ))}

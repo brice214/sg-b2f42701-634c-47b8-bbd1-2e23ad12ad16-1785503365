@@ -1,14 +1,35 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
+import formidable from "formidable";
+import type { File } from "formidable";
+import fs from "fs";
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 type ResponseData = {
   message: string;
   success: boolean;
 };
 
+const ALLOWED_MIME_TYPES = [
+  "application/pdf",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+const ALLOWED_EXTENSIONS = [".pdf", ".docx"];
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+function getFieldValue(value: string | string[] | undefined): string {
+  if (Array.isArray(value)) return value[0] ?? "";
+  return value ?? "";
+}
+
 async function verifyRecaptcha(token: string): Promise<boolean> {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-  
+
   if (!secretKey) {
     console.error("RECAPTCHA_SECRET_KEY not configured");
     return false;
@@ -31,55 +52,114 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   }
 }
 
+function parseForm(
+  req: NextApiRequest
+): Promise<{ fields: formidable.Fields; files: formidable.Files }> {
+  const form = formidable({
+    maxFileSize: MAX_FILE_SIZE,
+  });
+
+  return new Promise((resolve, reject) => {
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve({ fields, files });
+    });
+  });
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
   if (req.method !== "POST") {
-    return res.status(405).json({ 
-      message: "Méthode non autorisée", 
-      success: false 
-    });
-  }
-
-  const { firstName, lastName, email, phone, subject, message, recaptchaToken } = req.body;
-
-  if (!firstName || !lastName || !email || !subject || !message) {
-    return res.status(400).json({ 
-      message: "Tous les champs obligatoires doivent être remplis", 
-      success: false 
-    });
-  }
-
-  // Vérification reCAPTCHA
-  if (!recaptchaToken) {
-    return res.status(400).json({
-      message: "Vérification de sécurité manquante",
+    return res.status(405).json({
+      message: "Méthode non autorisée",
       success: false,
     });
   }
 
-  const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);
-  if (!isValidRecaptcha) {
-    return res.status(400).json({
-      message: "Vérification de sécurité échouée. Veuillez réessayer.",
-      success: false,
+  let attachmentPath: string | null = null;
+
+  try {
+    const { fields, files } = await parseForm(req);
+
+    const firstName = getFieldValue(fields.firstName);
+    const lastName = getFieldValue(fields.lastName);
+    const email = getFieldValue(fields.email);
+    const phone = getFieldValue(fields.phone);
+    const subject = getFieldValue(fields.subject);
+    const message = getFieldValue(fields.message);
+    const recaptchaToken = getFieldValue(fields.recaptchaToken);
+
+    if (!firstName || !lastName || !email || !subject || !message) {
+      return res.status(400).json({
+        message: "Tous les champs obligatoires doivent être remplis",
+        success: false,
+      });
+    }
+
+    if (!recaptchaToken) {
+      return res.status(400).json({
+        message: "Vérification de sécurité manquante",
+        success: false,
+      });
+    }
+
+    const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);
+    if (!isValidRecaptcha) {
+      return res.status(400).json({
+        message: "Vérification de sécurité échouée. Veuillez réessayer.",
+        success: false,
+      });
+    }
+
+    let attachment: { filename: string; path: string } | null = null;
+    const uploadedFileRaw = files.cahierDesCharges;
+    const uploadedFile: File | undefined = Array.isArray(uploadedFileRaw)
+      ? uploadedFileRaw[0]
+      : (uploadedFileRaw as File | undefined);
+
+    if (uploadedFile && uploadedFile.size > 0) {
+      const originalName = uploadedFile.originalFilename || "cahier-des-charges";
+      const extension = originalName.slice(originalName.lastIndexOf(".")).toLowerCase();
+      const isValidType =
+        ALLOWED_MIME_TYPES.includes(uploadedFile.mimetype || "") ||
+        ALLOWED_EXTENSIONS.includes(extension);
+
+      if (!isValidType) {
+        fs.unlink(uploadedFile.filepath, () => {});
+        return res.status(400).json({
+          message: "Le cahier des charges doit être au format PDF ou DOCX.",
+          success: false,
+        });
+      }
+
+      if (uploadedFile.size > MAX_FILE_SIZE) {
+        fs.unlink(uploadedFile.filepath, () => {});
+        return res.status(400).json({
+          message: "Le cahier des charges ne doit pas dépasser 10 Mo.",
+          success: false,
+        });
+      }
+
+      attachmentPath = uploadedFile.filepath;
+      attachment = { filename: originalName, path: uploadedFile.filepath };
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || "587"),
+      secure: process.env.SMTP_SECURE === "true",
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
+      },
     });
-  }
 
-  // Configuration du transporteur SMTP
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || "587"),
-    secure: process.env.SMTP_SECURE === "true", // true pour port 465, false pour autres ports
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD,
-    },
-  });
-
-  // Construction du message HTML
-  const htmlMessage = `
+    const htmlMessage = `
     <!DOCTYPE html>
     <html>
       <head>
@@ -123,6 +203,11 @@ export default async function handler(
               <span class="label">💬 Message:</span>
               <div class="message-box">${message.replace(/\n/g, "<br>")}</div>
             </div>
+            ${
+              attachment
+                ? `<div class="field"><span class="label">📎 Pièce jointe:</span><span class="value">${attachment.filename}</span></div>`
+                : ""
+            }
           </div>
           <div class="footer">
             <p style="margin: 0;">Ce message a été envoyé depuis le formulaire de contact de xeta-digital.com</p>
@@ -133,15 +218,14 @@ export default async function handler(
     </html>
   `;
 
-  // Version texte brut pour les clients email qui ne supportent pas HTML
-  const textMessage = `
+    const textMessage = `
 Nouveau message de contact depuis XETA-DIGITAL CORP
 
 Nom: ${firstName} ${lastName}
 Email: ${email}
 Téléphone: ${phone || "Non renseigné"}
 Sujet: ${subject}
-
+${attachment ? `Pièce jointe: ${attachment.filename}\n` : ""}
 Message:
 ${message}
 
@@ -149,28 +233,32 @@ ${message}
 Ce message a été envoyé depuis le formulaire de contact de xeta-digital.com
   `.trim();
 
-  const subjectEmail = `Nouveau message de contact depuis XETA-DIGITAL CORP`;
-
-  try {
-    // Envoi de l'email
     await transporter.sendMail({
       from: `"XETA-DIGITAL CORP - Contact" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to: "contact@xeta-digital.com",
-      replyTo: email, // Pour répondre directement au client
+      replyTo: email,
       subject: `[XETA-DIGITAL CORP] ${subject}`,
       text: textMessage,
       html: htmlMessage,
+      attachments: attachment ? [attachment] : undefined,
     });
 
-    return res.status(200).json({ 
-      message: "Message envoyé avec succès", 
-      success: true 
+    if (attachmentPath) {
+      fs.unlink(attachmentPath, () => {});
+    }
+
+    return res.status(200).json({
+      message: "Message envoyé avec succès",
+      success: true,
     });
   } catch (error) {
     console.error("Erreur d'envoi email:", error);
-    return res.status(500).json({ 
-      message: "Erreur lors de l'envoi du message. Veuillez réessayer.", 
-      success: false 
+    if (attachmentPath) {
+      fs.unlink(attachmentPath, () => {});
+    }
+    return res.status(500).json({
+      message: "Erreur lors de l'envoi du message. Veuillez réessayer.",
+      success: false,
     });
   }
 }

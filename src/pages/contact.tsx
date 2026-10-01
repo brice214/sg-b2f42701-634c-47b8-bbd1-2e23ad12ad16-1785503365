@@ -18,6 +18,13 @@ import {
   Linkedin,
 } from "lucide-react";
 
+const ALLOWED_FILE_MIME_TYPES = [
+  "application/pdf",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+const ALLOWED_FILE_EXTENSIONS = [".pdf", ".docx"];
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
 declare global {
   interface Window {
     grecaptcha: {
@@ -39,15 +46,38 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
+    const formEl = e.currentTarget;
+    const formData = new FormData(formEl);
+
+    const attachedFile = formData.get("cahierDesCharges") as File | null;
+    if (attachedFile && attachedFile.size > 0) {
+      const extension = attachedFile.name
+        .slice(attachedFile.name.lastIndexOf("."))
+        .toLowerCase();
+      const isValidType =
+        ALLOWED_FILE_MIME_TYPES.includes(attachedFile.type) ||
+        ALLOWED_FILE_EXTENSIONS.includes(extension);
+
+      if (!isValidType) {
+        setSubmitStatus({
+          type: "error",
+          message: "Le cahier des charges doit être au format PDF ou DOCX.",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (attachedFile.size > MAX_FILE_SIZE) {
+        setSubmitStatus({
+          type: "error",
+          message: "Le cahier des charges ne doit pas dépasser 10 Mo.",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+    } else {
+      formData.delete("cahierDesCharges");
+    }
 
     try {
       // Obtenir le token reCAPTCHA
@@ -64,12 +94,11 @@ export default function Contact() {
         });
       });
 
+      formData.append("recaptchaToken", recaptchaToken);
+
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...data, recaptchaToken }),
+        body: formData,
       });
 
       const result = await response.json();
@@ -79,11 +108,11 @@ export default function Contact() {
           type: "success",
           message: "Message envoyé avec succès ! Nous vous répondrons rapidement.",
         });
-        (e.target as HTMLFormElement).reset();
+        formEl.reset();
       } else {
         setSubmitStatus({
           type: "error",
-          message: "Erreur lors de l'envoi. Veuillez réessayer.",
+          message: result.message || "Erreur lors de l'envoi. Veuillez réessayer.",
         });
       }
     } catch (error) {
@@ -254,6 +283,19 @@ export default function Contact() {
                         rows={6}
                         required
                       />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="cahierDesCharges">Cahier des charges (optionnel)</Label>
+                      <Input
+                        id="cahierDesCharges"
+                        name="cahierDesCharges"
+                        type="file"
+                        accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        Formats acceptés : PDF, DOCX (10 Mo maximum)
+                      </p>
                     </div>
 
                     <Button size="lg" className="w-full" type="submit" disabled={isSubmitting}>

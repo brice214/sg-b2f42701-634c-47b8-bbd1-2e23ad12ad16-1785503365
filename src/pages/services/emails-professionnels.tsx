@@ -26,12 +26,12 @@ export default function EmailsProfessionnels() {
   const plans = [
     {
       name: "Starter",
-      price: "29 900",
+      price: "39 900",
       period: "FCFA/mois",
       description: "Pour les petites équipes",
-      users: "15 boîtes email",
+      users: "10 boîtes email",
       features: [
-        "15 boîtes email @votreentreprise.ga",
+        "10 boîtes email @votreentreprise.ga",
         "Stockage illimité",
         "Protection anti-spam & antivirus",
         "Webmail sécurisé",

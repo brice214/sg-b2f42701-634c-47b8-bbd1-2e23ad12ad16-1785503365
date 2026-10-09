@@ -244,7 +244,19 @@ export default function EmailsProfessionnels() {
                       plan.popular ? "" : "variant-outline"
                     }`}
                   >
-                    <Link href="/contact">Commander</Link>
+                    <Link
+                      href={{
+                        pathname: "/commande-email",
+                        query: {
+                          plan: plan.name,
+                          price: plan.price,
+                          period: plan.period,
+                          users: plan.users,
+                        },
+                      }}
+                    >
+                      Commander
+                    </Link>
                   </Button>
                 </Card>
               ))}
